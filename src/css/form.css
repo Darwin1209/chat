@@ -1,0 +1,131 @@
+:root {
+  --main-blue: #3369f3;
+  --main-red: #ff2f2f;
+  --main-text: #1e1e1e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.body {
+  font-family: Inter;
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: 100vh;
+}
+
+.form-reg {
+  display: flex;
+  flex-direction: column;
+  width: 340px;
+  background: #ffffff;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+  border-radius: 12px;
+  padding: 30px;
+  padding-top: 50px;
+
+  &_registr {
+    height: 615px;
+  }
+
+  &_autoriz {
+    height: 450px;
+  }
+
+  &__title {
+    margin: 0;
+    margin-bottom: 57px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 20px;
+    color: var(--main-text);
+  }
+
+  &__wrap-input {
+    position: relative;
+    margin-bottom: 25px;
+  }
+
+  &__title-input {
+    position: absolute;
+    left: 0;
+    top: -7px;
+    font-weight: 500;
+    font-size: 9px;
+    line-height: 9px;
+    color: #999999;
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    padding: 0;
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--main-blue);
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+
+    &:focus {
+      outline: none;
+    }
+
+    /* &:focus + .form-reg__title-input {
+      top: -7px;
+    }
+
+    &:visited + .form-reg__title-input {
+      top: -7px;
+    }
+
+    &:checked + .form-reg__title-input {
+      top: -7px;
+    } */
+
+    &_type-common {
+      color: var(--main-text);
+    }
+
+    &_type-password {
+      color: var(--main-red);
+    }
+  }
+
+  &__submit {
+    margin-top: auto;
+    padding: 12px;
+    width: 100%;
+
+    background: #3369f3;
+    border: none;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 13px;
+
+    color: #ffffff;
+  }
+
+  &__link {
+    margin: 0 auto;
+    margin-top: 14px;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 11px;
+    text-decoration: none;
+    color: var(--main-blue);
+
+    &:visited {
+      color: var(--main-blue);
+    }
+  }
+}

@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server.js",
+    "dev": "tsc --watch",
+    "compile": "tsc",
     "zip": "zip -r build.zip static package.json server.js README.md"
   },
   "keywords": [],
@@ -12,8 +14,17 @@
   "license": "ISC",
   "engine": "13.12.0",
   "dependencies": {
+    "del": "^6.0.0",
     "express": "^4.17.1",
+    "gulp": "^4.0.2",
+    "gulp-file-include": "^2.3.0",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-postcss": "^9.0.0",
     "handlebars": "^4.7.7",
-    "nodemon": "^2.0.6"
+    "nodemon": "^2.0.6",
+    "postcss": "^8.2.7",
+    "postcss-nested": "^5.0.5",
+    "postcss-pxtorem": "^6.0.0",
+    "uuid": "^8.3.2"
   }
 }

@@ -1,2 +1,5 @@
 node_modules
 gulpfile.js
+my_folder
+old_static
+static/js

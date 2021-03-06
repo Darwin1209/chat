@@ -17,10 +17,16 @@ export default class Auth extends Block {
 						link: 'registration.html',
 						linkLabel: 'Нет аккаунта?',
 						fields: [
-							{ type: 'text', name: 'login', label: 'Логин' },
+							{
+								type: 'text',
+								name: 'login',
+								validation: 'text',
+								label: 'Логин',
+							},
 							{
 								type: 'password',
 								name: 'password',
+								validation: 'pass',
 								label: 'Пароль',
 								pass: true,
 							},

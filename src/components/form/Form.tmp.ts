@@ -24,6 +24,7 @@ export const template: string = `
     type="{{this.type}}"
     name="{{this.name}}"
     class="form-reg__input form-reg__input_type-{{#if this.pass}}password{{else}}common{{/if}}"
+    required
   />
   <label class="form-reg__title-input">{{this.label}}</label>
   </div>

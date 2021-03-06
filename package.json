@@ -4,30 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "gulp serve",
-    "build": "gulp build",
-    "dev": "node server.js"
+    "start": "node server.js",
+    "zip": "zip -r build.zip static package.json server.js README.md"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "engine": "13.12.0",
-  "devDependencies": {
-    "autoprefixer": "^10.0.1",
-    "browser-sync": "^2.26.13",
-    "cssnano": "^4.1.10",
-    "del": "^6.0.0",
-    "gulp": "^4.0.2",
-    "gulp-file-include": "^2.2.2",
-    "gulp-htmlmin": "^5.0.1",
-    "gulp-postcss": "^9.0.0",
-    "postcss": "^8.1.2",
-    "postcss-cli": "^8.1.0",
-    "postcss-nested": "^5.0.1",
-    "postcss-pxtorem": "^5.1.1"
-  },
   "dependencies": {
     "express": "^4.17.1",
+    "handlebars": "^4.7.7",
     "nodemon": "^2.0.6"
   }
 }

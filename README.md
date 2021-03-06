@@ -1,7 +1,16 @@
 # Проект "Чат"
 
-Макет проекта в figma : https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1
+## Макет
+За основу взят макет из яндекса, но с некоторыми мелкими доработками. 
+https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1.
 
-#### Запуск
+## Описание
 
-Для запуска проекта необходимо выполнить команду **npm run dev**
+Мессенджер на нативном JavaScript.
+
+## Запуск
+
+Проект разворачивается на localhost:3000
+
+Команды:
+- npm start — запуск dev версии проекта

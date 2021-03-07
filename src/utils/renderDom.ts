@@ -1,6 +1,6 @@
-export function renderDom(query, block): HTMLElement {
+import Block from '../modules/block'
+
+export function renderDom(query: string, block: Block): void {
 	const root = document.querySelector(query)
-	// Можно завязаться на реализации вашего класса Block
-	root.appendChild(block.getContent())
-	return root
+	root?.appendChild(block.getContent())
 }

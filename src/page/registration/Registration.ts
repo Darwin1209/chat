@@ -83,9 +83,3 @@ export default class Registration extends Block {
 		renderChildren(this.element, this.props.components)
 	}
 }
-
-// result = res2.map(el => ({
-//   type: 'text',
-//   name: el.children[0].name,
-//   label: el.children[1].textContent
-// }))

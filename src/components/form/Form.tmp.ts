@@ -17,9 +17,9 @@
 */
 
 export const template: string = `
-<h1 class="form-reg__title">{{title}}</h1>
+<h1 class="form-reg__title">{{context.title}}</h1>
 
-{{#each fields}}
+{{#each context.fields}}
   <div class="form-reg__wrap-input">
     <label class="form-reg__title-input">{{this.label}}</label>
     <input
@@ -32,6 +32,6 @@ export const template: string = `
     <label class="form-reg__valid-input">{{this.validText}}</label>
   </div>
 {{/each}}
-<button class="form-reg__submit">{{this.submit}}</button>
-<a href="{{this.link}}" class="form-reg__link">{{this.linkLabel}}</a>
+<button class="form-reg__submit">{{context.submit}}</button>
+<a href="{{context.link}}" class="form-reg__link">{{context.linkLabel}}</a>
 `

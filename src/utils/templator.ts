@@ -1,5 +1,7 @@
+import { Props } from '../modules/block'
+
 //@ts-ignore
-Handlebars.registerHelper('if_eq', function(a, b, opts) {
+Handlebars.registerHelper('if_eq', function (a, b, opts) {
 	if (a == b) {
 		return opts.fn(this)
 	} else {
@@ -7,7 +9,7 @@ Handlebars.registerHelper('if_eq', function(a, b, opts) {
 	}
 })
 
-export const compile = (template, props) => {
+export const compile = (template: string, props: Props | undefined) => {
 	//@ts-ignore
 	const tmp = Handlebars.compile(template)
 	return tmp(props)

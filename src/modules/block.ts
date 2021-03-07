@@ -2,12 +2,20 @@ import { EventBus } from '../utils/EventBus.js'
 // import { v4 as makeUUID } from "uuid"
 // Нельзя создавать экземпляр данного класса
 
-interface Props {
-  events: object
-  components: Block[]
-  className: string
-  items: object[]
-  context: object
+export interface Props {
+  events?: {
+		click: Event,
+		submit: Event,
+		focus: Event,
+		blur: Event,
+	}
+  components?: Block[]
+  className?: string | undefined
+  items?: object[]
+  context?: {
+
+	}
+	list?: object[]
 }
 
 class Block {
@@ -23,8 +31,11 @@ class Block {
 		FLOW_CDR: 'flow:component-did-render',
 	}
 
-	_element = null
-	_meta = null
+	_element:HTMLElement
+	_meta = {
+		tagName: '',
+		props: {}
+	}
 	_id = null
 
 	/** JSDoc
@@ -50,7 +61,7 @@ class Block {
 		this.eventBus.emit(Block.EVENTS.INIT)
 	}
 
-	_registerEvents(eventBus) {
+	_registerEvents(eventBus: EventBus) {
 		eventBus.on(Block.EVENTS.INIT, this.init.bind(this))
 		eventBus.on(Block.EVENTS.FLOW_CDM, this._componentDidMount.bind(this))
 		eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this))
@@ -81,7 +92,7 @@ class Block {
 
 	componentDidMount() {}
 
-	_componentDidUpdate(oldProps, newProps) {
+	_componentDidUpdate(oldProps: Props, newProps: Props) {
 		const response = this.componentDidUpdate(oldProps, newProps)
 
 		if (JSON.stringify(oldProps) !== JSON.stringify(newProps) || response) {
@@ -89,11 +100,11 @@ class Block {
 		}
 	}
 
-	componentDidUpdate(oldProps, newProps) {
+	componentDidUpdate(oldProps: Props, newProps: Props) {
 		return true
 	}
 
-	setProps = (nextProps) => {
+	setProps = (nextProps: Props) => {
 		if (!nextProps) {
 			return
 		}
@@ -110,7 +121,7 @@ class Block {
 
 		this._removeEvents()
 
-		this._element.insertAdjacentHTML('afterbegin', block)
+		this._element?.insertAdjacentHTML('afterbegin', block)
 
 		this._addEvents()
 
@@ -118,7 +129,9 @@ class Block {
 	}
 
 	// Переопределяется пользователем. Необходимо вернуть разметку
-	render(): void {}
+	render(): string {
+		return ""
+	}
 
 	getContent() {
 		return this.element
@@ -166,7 +179,7 @@ class Block {
 		})
 	}
 
-	_createDocumentElement(tagName) {
+	_createDocumentElement(tagName: string) {
 		// Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
 		const element = document.createElement(tagName)
 		element.className = this.props.className

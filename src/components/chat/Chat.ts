@@ -1,10 +1,10 @@
-import Block from '../../modules/block.js'
+import Block, { Props } from '../../modules/block.js'
 
 import { compile } from '../../utils/templator.js'
 import { template } from './Chat.tmp.js'
 
 export default class Aside extends Block {
-	constructor(props) {
+	constructor(props: Props) {
 		super('main', {
 			...props,
 			className: 'main-wrapper',
@@ -45,7 +45,6 @@ export default class Aside extends Block {
 					date: '12:05',
 					me: true,
 				},
-				{},
 			],
 		})
 	}

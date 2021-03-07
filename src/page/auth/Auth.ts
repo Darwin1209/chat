@@ -20,7 +20,7 @@ export default class Auth extends Block {
 							{
 								type: 'text',
 								name: 'login',
-								validation: 'text',
+								validation: 'login',
 								label: 'Логин',
 								validText: 'Невалидный логин',
 							},

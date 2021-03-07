@@ -118,8 +118,11 @@ class Block {
 
 	_render() {
 		const block = this.render()
-
+		
 		this._removeEvents()
+		
+		//!Временное решение для ререндера страницы
+		this._element.innerHTML = ""
 
 		this._element?.insertAdjacentHTML('afterbegin', block)
 

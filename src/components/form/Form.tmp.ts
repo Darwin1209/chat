@@ -10,6 +10,7 @@
       type: "password",
       name: "password_two",
       label: "Пароль (ещё раз)",
+      validation: 'text'
     },
   ],
 }
@@ -20,13 +21,15 @@ export const template: string = `
 
 {{#each fields}}
   <div class="form-reg__wrap-input">
-  <input
-    type="{{this.type}}"
-    name="{{this.name}}"
-    class="form-reg__input form-reg__input_type-{{#if this.pass}}password{{else}}common{{/if}}"
-    required
-  />
-  <label class="form-reg__title-input">{{this.label}}</label>
+    <label class="form-reg__title-input">{{this.label}}</label>
+    <input
+      type="{{this.type}}"
+      name="{{this.name}}"
+      class="form-reg__input form-reg__input_type-{{#if this.pass}}password{{else}}common{{/if}}"
+      data-valid={{this.validation}}
+      required
+    />
+    <label class="form-reg__valid-input">{{this.validText}}</label>
   </div>
 {{/each}}
 <button class="form-reg__submit">{{this.submit}}</button>

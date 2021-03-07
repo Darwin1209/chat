@@ -43,7 +43,7 @@
 
 .form-reg__title {
     margin: 0;
-    margin-bottom: 57px;
+    margin-bottom: 50px;
     text-align: center;
     font-weight: 500;
     font-size: 20px;
@@ -53,18 +53,40 @@
 
 .form-reg__wrap-input {
     position: relative;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
 
 .form-reg__title-input {
     position: absolute;
     left: 0;
-    top: -7px;
+    top: 7px;
     font-weight: 500;
     font-size: 9px;
     line-height: 9px;
     color: #999999;
+    transition: all 0.2s;
   }
+
+.form-reg__title-input_active {
+  transform: translateY(-17px);
+}
+
+.form-reg__valid-input {
+  position: absolute;
+  left: 0;
+  top: 32px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 8px;
+  color: #FF2F2F;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.form-reg__valid-input_active {
+  opacity: 1;
+}
 
 .form-reg__input {
     width: 100%;
@@ -78,20 +100,8 @@
   }
 
 .form-reg__input:focus {
-      outline: none;
-    }
-
-/* &:focus + .form-reg__title-input {
-      top: -7px;
-    }
-
-    &:visited + .form-reg__title-input {
-      top: -7px;
-    }
-
-    &:checked + .form-reg__title-input {
-      top: -7px;
-    } */
+  outline: none;
+}
 
 .form-reg__input_type-common {
       color: var(--main-text);

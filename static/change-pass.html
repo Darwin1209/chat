@@ -12,50 +12,8 @@
     <link rel="stylesheet" href="./css/profile.css" />
   </head>
   <body class="body">
-    <div class="container flex">
-      <a href="index.html" class="back">
-        <img src="./img/circle.svg" alt="" />
-      </a>
-      <main class="profile">
-        <div class="profile__wrap-person person">
-          <a class="person__logo" href="change-avatar.html">
-            <div class="person__wrap-img">
-              <img src="./img/logo-person.png" alt="" class="person__img" />
-            </div>
-            <div class="person__change">Поменять аватар</div>
-          </a>
-          <p class="person__name">&nbsp;</p>
-        </div>
-        <form class="form profile__wrap-info info">
-          <div class="info__item">
-            <label for="" class="info__label">Старый пароль</label>
-            <input
-              type="password"
-              class="info__input"
-              name="oldPassword"
-              value="email@gmail.com"
-            />
-          </div>
-          <div class="info__item">
-            <label for="" class="info__label">Новый пароль</label>
-            <input
-              type="password"
-              class="info__input"
-              name="newPassword"
-              value="fwagfwagaw"
-            />
-          </div>
-          <div class="info__item">
-            <label for="" class="info__label">Повторите новый пароль</label>
-            <input type="password" class="info__input" value="Иван" />
-          </div>
-
-          <button type="submit" class="info__submit info__submit_pass">
-            Сохранить
-          </button>
-        </form>
-      </main>
-    </div>
-    <script src="./forms.js"></script>
+    <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script type="module" src="./js/page/profileChangePass/index.js"></script>
   </body>
 </html>

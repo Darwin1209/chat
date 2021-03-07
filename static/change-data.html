@@ -12,75 +12,8 @@
     <link rel="stylesheet" href="./css/profile.css" />
   </head>
   <body class="body">
-    <div class="container flex">
-      <a href="index.html" class="back">
-        <img src="./img/circle.svg" alt="" />
-      </a>
-      <main class="profile">
-        <div class="profile__wrap-person person">
-          <a class="person__logo" href="change-avatar.html">
-            <div class="person__wrap-img">
-              <img src="./img/logo-person.png" alt="" class="person__img" />
-            </div>
-            <div class="person__change">Поменять аватар</div>
-          </a>
-          <p class="person__name">&nbsp;</p>
-        </div>
-        <form class="form profile__wrap-info info">
-          <div class="info__item">
-            <label for="" class="info__label">Почта</label>
-            <input
-              type="text"
-              class="info__input"
-              name="email"
-              value="email@gmail.com"
-            />
-          </div>
-          <div class="info__item">
-            <label for="" class="info__label">Логин</label>
-            <input type="text" class="info__input" name="login" value="login" />
-          </div>
-          <div class="info__item">
-            <label for="" class="info__label">Имя</label>
-            <input
-              type="text"
-              class="info__input"
-              name="first_name"
-              value="Иван"
-            />
-          </div>
-          <div class="info__item">
-            <label for="" class="info__label">Фамилия</label>
-            <input
-              type="text"
-              class="info__input"
-              name="second_name"
-              value="Иванов"
-            />
-          </div>
-          <div class="info__item">
-            <label for="" class="info__label">Имя в чате</label>
-            <input
-              type="text"
-              class="info__input"
-              name="display_name"
-              value="Иван"
-            />
-          </div>
-          <div class="info__item">
-            <label for="" class="info__label">Телефон</label>
-            <input
-              type="text"
-              class="info__input"
-              name="phone"
-              value="+7 (999) 999 30 37"
-            />
-          </div>
-
-          <button type="submit" class="info__submit">Сохранить</button>
-        </form>
-      </main>
-    </div>
-    <script src="./forms.js"></script>
+    <div id="root"></div>
+    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+    <script type="module" src="./js/page/profileChangeData/index.js"></script>
   </body>
 </html>

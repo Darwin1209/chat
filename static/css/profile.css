@@ -63,6 +63,10 @@
     position: relative;
   }
 
+.person__logo:hover {
+  cursor: pointer;
+}
+
 .person__logo:hover .person__change {
       z-index: 2;
     }
@@ -116,6 +120,8 @@
 }
 
 .info__item {
+    position: relative;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -134,6 +140,25 @@
     line-height: 13px;
     color: var(--main-text);
   }
+
+.info__valid {
+  position: absolute;
+  left: 102%;
+  top: 14px;
+
+  width: 100%;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 8px;
+  line-height: 8px;
+  color: #FF2F2F;
+  opacity: 0;
+  transition: all 0.3s;
+}
+
+.info__valid_active {
+  opacity: 1;
+}
 
 .info__input {
     padding: 0;

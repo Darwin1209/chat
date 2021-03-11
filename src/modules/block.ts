@@ -2,12 +2,17 @@ import { EventBus } from '../utils/EventBus.js'
 // import { v4 as makeUUID } from "uuid"
 // Нельзя создавать экземпляр данного класса
 
+// interface Events {
+// 	click?: Event,
+// 	submit?: Event,
+// 	focus?: Event,
+// 	blur?: Event,
+// }
+
 export interface Props {
+	[key: string]: any
   events?: {
-		click: Event,
-		submit: Event,
-		focus: Event,
-		blur: Event,
+		[key: string]: (...args: any) => void
 	}
   components?: Block[]
   className?: string | undefined
@@ -100,7 +105,8 @@ class Block {
 		}
 	}
 
-	componentDidUpdate(oldProps: Props, newProps: Props) {
+	componentDidUpdate(oldProps: Props, newProps: Props):boolean {
+		console.log(oldProps, newProps)
 		return true
 	}
 
@@ -161,16 +167,16 @@ class Block {
 		})
 	}
 
-	_makePropsProxy(props) {
+	_makePropsProxy(props: Props) {
 		return new Proxy(props, {
-			get(target: object, prop: string) {
+			get(target: Props, prop: string) {
 				if (prop.indexOf('_') === 0) {
 					throw new Error('Отказано в доступе')
 				}
 				const value = target[prop]
 				return typeof value === 'function' ? value.bind(target) : value
 			},
-			set: (target, prop, value) => {
+			set: (target, prop:string, value) => {
 				const oldProps = { ...target }
 				target[prop] = value
 				this.eventBus.emit(Block.EVENTS.FLOW_CDU, oldProps, target)
@@ -185,7 +191,7 @@ class Block {
 	_createDocumentElement(tagName: string) {
 		// Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
 		const element = document.createElement(tagName)
-		element.className = this.props.className
+		element.className = this.props.className || ''
 		return element
 	}
 

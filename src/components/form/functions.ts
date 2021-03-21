@@ -4,9 +4,9 @@ const CLASS_LABEL_INPUT: string = 'form-reg__title-input_active'
 const CLASS_LABEL_VALID: string = 'form-reg__valid-input_active'
 
 type Event = {
-	preventDefault(): void,
-	target: HTMLFormElement,
-	currentTarget: HTMLFormElement,
+	preventDefault(): void
+	target: HTMLFormElement
+	currentTarget: HTMLFormElement
 }
 
 export function submit(e: Event): void {
@@ -26,18 +26,17 @@ export function submit(e: Event): void {
 	}))
 	fieldsArray.forEach(({ valid, labelValid, value }) => {
 		if (valid !== 'passTwo') {
-			const valideted: boolean = Validation[valid](value)
-
-			valideted
+			const validated: boolean = Validation[valid](value)
+			validated
 				? labelValid?.classList.remove(CLASS_LABEL_VALID)
 				: labelValid?.classList.add(CLASS_LABEL_VALID)
 		} else {
-			const valideted = Validation[valid](
+			const validated = Validation[valid](
 				value,
 				fieldsArray.find((el) => el.name === 'password')?.value
 			)
 
-			valideted
+			validated
 				? labelValid?.classList.remove(CLASS_LABEL_VALID)
 				: labelValid?.classList.add(CLASS_LABEL_VALID)
 		}
@@ -66,8 +65,8 @@ export function blur(e: Event): void {
 	const labelValid = inp.nextElementSibling
 
 	if (valid !== 'passTwo') {
-		const valideted: boolean = Validation[valid](inp.value)
-		valideted
+		const validated: boolean = Validation[valid](inp.value)
+		validated
 			? labelValid?.classList.remove(CLASS_LABEL_VALID)
 			: labelValid?.classList.add(CLASS_LABEL_VALID)
 	} else {
@@ -79,8 +78,8 @@ export function blur(e: Event): void {
 				break
 			}
 		}
-		const valideted = Validation[valid](inp.value, pass)
-		valideted
+		const validated = Validation[valid](inp.value, pass)
+		validated
 			? labelValid?.classList.remove(CLASS_LABEL_VALID)
 			: labelValid?.classList.add(CLASS_LABEL_VALID)
 	}

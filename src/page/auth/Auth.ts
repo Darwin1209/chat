@@ -3,6 +3,7 @@ import Block from '../../modules/block.js'
 import Form from '../../components/form/index.js'
 
 import { renderChildren } from '../../utils/renderChildren.js'
+import { fields } from './mock.js'
 
 export default class Auth extends Block {
 	constructor() {
@@ -16,23 +17,7 @@ export default class Auth extends Block {
 						submit: 'Авторизоваться',
 						link: 'registration.html',
 						linkLabel: 'Нет аккаунта?',
-						fields: [
-							{
-								type: 'text',
-								name: 'login',
-								validation: 'login',
-								label: 'Логин',
-								validText: 'Невалидный логин',
-							},
-							{
-								type: 'password',
-								name: 'password',
-								validation: 'pass',
-								label: 'Пароль',
-								validText: 'Слабый пароль',
-								pass: true,
-							},
-						],
+						fields,
 					},
 				}),
 			],

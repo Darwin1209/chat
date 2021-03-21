@@ -1,6 +1,3 @@
-import Profile from './Profile.js'
-import { renderDom } from '../../utils/renderDom.js'
+import ProfileChangePass from './Profile.js'
 
-const main: Profile = new Profile()
-
-renderDom('#root', main)
+export default ProfileChangePass

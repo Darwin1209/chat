@@ -1,6 +1,6 @@
 export const template: string = `
 <div class="wrap-link">
-  <a class="link link_profile" href="profile.html">Профиль</a>
+  <a class="link link_profile" href="profile">Профиль</a>
 </div>
 <form class="form form-search">
   <div class="wrapper-input-search">

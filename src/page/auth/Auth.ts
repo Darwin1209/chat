@@ -15,7 +15,7 @@ export default class Auth extends Block {
 					context: {
 						title: 'Авторизация',
 						submit: 'Авторизоваться',
-						link: 'registration.html',
+						link: '/registration',
 						linkLabel: 'Нет аккаунта?',
 						fields,
 					},

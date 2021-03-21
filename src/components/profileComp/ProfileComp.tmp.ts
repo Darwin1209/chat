@@ -9,7 +9,7 @@ export const template: string = `
   </div>
 {{/if}}
 
-<a href="index.html" class="back">
+<a href="/" class="back">
   <img src="./img/circle.svg" alt="" />
 </a>
 <main class="profile">
@@ -54,12 +54,12 @@ export const template: string = `
   {{#if context.profile}}
   <ul class="list-action">
     <li class="list-action__item">
-      <a href="change-data.html" class="list-action__link"
+      <a href="change-data" class="list-action__link"
         >Изменить данные</a
       >
     </li>
     <li class="list-action__item">
-      <a href="change-pass.html" class="list-action__link"
+      <a href="change-pass" class="list-action__link"
         >Изменить пароль</a
       >
     </li>

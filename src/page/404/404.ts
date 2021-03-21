@@ -13,7 +13,7 @@ export default class E404 extends Block {
 					context: {
 						code: '404',
 						message: 'Не туда попали',
-						link: 'index.html',
+						link: '/',
 						linkText: 'Назад к чатам',
 					},
 				}),

@@ -9,6 +9,12 @@ import ProfileChangePass from './page/profileChangePass/index.js'
 import E404 from './page/404/index.js'
 import E500 from './page/500/index.js'
 
+// import { test } from './api/Controlers.js'
+
+// test().then((a) => {
+// 	console.dir(a)
+// })
+
 const app = new Router('#root')
 
 app

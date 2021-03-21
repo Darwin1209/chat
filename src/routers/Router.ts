@@ -21,7 +21,6 @@ class Router {
 	}
 
 	use(pathname: string, block: any, nameRoute: string = 'title') {
-		console.log(block)
 		// Вместо трёх точек напишем отдельную сущность — об этом речь пойдёт ниже
 		const route = new Route(pathname, block, {
 			rootQuery: this._rootQuery,
@@ -51,7 +50,6 @@ class Router {
 		if (this._currentRoute) {
 			this._currentRoute.leave()
 		}
-		console.log('aa')
 
 		this._currentRoute = route
 		route.render(route, pathname)

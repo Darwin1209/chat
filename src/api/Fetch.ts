@@ -1,3 +1,5 @@
+import queryStringify from './queryString.js'
+
 enum METHOD {
 	GET = 'GET',
 	POST = 'POST',
@@ -11,31 +13,26 @@ interface RequestHeaders {
 }
 
 type Options = {
-	method: string
+	method?: string
 	data?: any
 	timeout?: number
 	headers?: RequestHeaders
 	retries?: number
 }
 
-// ?type OptionsWithoutMethod = Omit<Options, 'method'>
-
-type StringIndexed = Record<string, any>;
-
-function queryStringify(data: any): string {
-	return Object.entries(data)
-		.reduce((acc, [key, value]) => (acc = `${acc}${key}=${value}&`), '')
-		.slice(0, -1)
-}
+type StringIndexed = Record<string, any>
 
 class HTTPTransport {
-	_path: string
+	_baseUrl: string
 
 	constructor(path: string) {
-		this._path = path
+		this._baseUrl = path
 	}
 
-	get(url: string, options: Options): Promise<XMLHttpRequest> {
+	get(
+		url: string,
+		options: Options = { method: METHOD.GET }
+	): Promise<XMLHttpRequest> {
 		const { data, timeout } = options
 		return this.request(
 			`${url}?${queryStringify(data)}`,
@@ -92,7 +89,8 @@ class HTTPTransport {
 
 		return new Promise((resolve, reject) => {
 			const xhr = new XMLHttpRequest()
-			xhr.open(method, url)
+			xhr.withCredentials = true
+			xhr.open(method, `${this._baseUrl}${url}`)
 			xhr.timeout = timeout
 
 			if (headers !== undefined) {
@@ -122,33 +120,4 @@ class HTTPTransport {
 	}
 }
 
-// function request<TResponse>(
-// 	url: string,
-// 	options: Options = { method: METHOD.GET }
-// ): Promise<TResponse> {
-// 	const { method, data } = options
-
-// 	return new Promise((resolve, reject) => {
-// 		const xhr = new XMLHttpRequest()
-// 		xhr.open(method, url)
-// 		xhr.setRequestHeader('Content-Type', 'text/plain')
-
-// 		xhr.onload = function () {
-// 			resolve(xhr)
-// 		}
-
-// 		const handleError = (err: ProgressEvent) => {
-// 			console.log(err)
-// 		}
-
-// 		xhr.onabort = handleError
-// 		xhr.onerror = handleError
-// 		xhr.ontimeout = handleError
-
-// 		if (method === METHOD.GET || !data) {
-// 			xhr.send()
-// 		} else {
-// 			xhr.send(JSON.stringify(data))
-// 		}
-// 	})
-// }
+export default HTTPTransport

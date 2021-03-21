@@ -6,13 +6,14 @@ import { compile } from '../../utils/templator.js'
 import { blur, submit } from './functions.js'
 
 type Event = {
-	preventDefault(): void,
-	target: HTMLFormElement,
-	currentTarget: HTMLFormElement,
+	preventDefault(): void
+	target: HTMLFormElement
+	currentTarget: HTMLFormElement
 }
 
 export default class ProfileComp extends Block {
 	constructor(props: Props) {
+		console.log(props)
 		super('div', {
 			className: 'container flex',
 			events: {

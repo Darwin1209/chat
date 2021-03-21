@@ -31,6 +31,13 @@
 					mode: 'cors', // Работаем с CORS
 					body: form,
 				})
+
+			// 	method: 'POST',
+      // credentials: 'include', // Нужно подставлять куки
+      // mode: 'cors', // Работаем с CORS
+      // headers: {
+      //   'content-type': 'application/json', // Данные отправляем в формате JSON
+      // },
 					.then((response) => response.json())
 					.then((data) => {
 						console.log(data)

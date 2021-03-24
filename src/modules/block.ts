@@ -1,4 +1,5 @@
 import { EventBus } from '../utils/EventBus.js'
+import Router from '../routers/Router.js'
 
 export interface Props {
 	[key: string]: any
@@ -74,7 +75,9 @@ class Block {
 		this.eventBus.emit(Block.EVENTS.FLOW_RENDER)
 	}
 
-	componentDidMount() {}
+	componentDidMount() {
+		
+	}
 
 	_componentDidUpdate(oldProps: Props, newProps: Props) {
 		const response = this.componentDidUpdate(oldProps, newProps)
@@ -114,6 +117,7 @@ class Block {
 		this._addEvents()
 
 		this.eventBus.emit(Block.EVENTS.FLOW_CDR)
+		
 	}
 
 	// Переопределяется пользователем. Необходимо вернуть разметку
@@ -175,7 +179,7 @@ class Block {
 	}
 
 	show() {
-		this.getContent().style.display = 'block'
+		this.getContent().style.display = 'flex'
 	}
 
 	hide() {

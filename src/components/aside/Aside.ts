@@ -12,7 +12,6 @@ export default class Aside extends Block {
 	}
 
 	render() {
-		console.log(this.props.items)
 		return compile(template, { list: this.props.items })
 	}
 }

@@ -1,6 +1,8 @@
 import Block from '../../modules/block.js'
 
 import ProfileComp from '../../components/profileComp/index.js'
+
+import { replaceLink } from '../../utils/replaceLink.js'
 import { renderChildren } from '../../utils/renderChildren.js'
 import { fields } from './mock.js'
 
@@ -21,5 +23,6 @@ export default class Profile extends Block {
 
 	componentDidRender(): void {
 		renderChildren(this.element, this.props.components)
+		replaceLink(this.element)
 	}
 }

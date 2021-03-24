@@ -3,6 +3,7 @@ import Block from '../../modules/block.js'
 import Error from '../../components/error/index.js'
 
 import { renderChildren } from '../../utils/renderChildren.js'
+import { replaceLink } from '../../utils/replaceLink.js'
 
 export default class E500 extends Block {
 	constructor() {
@@ -27,5 +28,6 @@ export default class E500 extends Block {
 
 	componentDidRender(): void {
 		renderChildren(this.element, this.props.components)
+		replaceLink(this.element)
 	}
 }

@@ -51,6 +51,12 @@ class Router {
 			this._currentRoute.leave()
 		}
 
+		// console.log(pathname)
+		// if(this.isLogin() === false && (pathname !== '/auth' || pathname !== '/registration')) {
+		// 	this.go('/auth')
+		// 	return
+		// }
+
 		this._currentRoute = route
 		route.render()
 	}
@@ -67,6 +73,10 @@ class Router {
 
 	forward() {
 		this.history.forward()
+	}
+
+	isLogin(): boolean {
+		return Boolean(sessionStorage.getItem('login')) === true
 	}
 
 	getRoute(pathname) {

@@ -9,7 +9,9 @@ export default class Form extends Block {
 		super('form', {
 			...props,
 			events: {
-				submit,
+				submit: (e) => {
+					submit(e, this.props?.context?.type)
+				},
 				focus,
 				blur,
 			},

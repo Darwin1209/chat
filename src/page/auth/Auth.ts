@@ -22,6 +22,7 @@ export default class Auth extends Block {
 						submit: 'Авторизоваться',
 						link: '/registration',
 						linkLabel: 'Нет аккаунта?',
+						type: 'auth',
 						fields,
 					},
 				}),
@@ -33,7 +34,7 @@ export default class Auth extends Block {
 		return ''
 	}
 
-	componentDidRender(): void {		
+	componentDidRender(): void {
 		renderChildren(this.element, this.props.components)
 		replaceLink(this.element)
 	}

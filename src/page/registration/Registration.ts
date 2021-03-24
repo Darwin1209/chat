@@ -18,6 +18,7 @@ export default class Registration extends Block {
 						submit: 'Зарегистрироваться',
 						link: '/auth',
 						linkLabel: 'Войти',
+						type: 'registration',
 						fields,
 					},
 				}),

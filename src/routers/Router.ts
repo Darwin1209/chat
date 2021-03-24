@@ -51,18 +51,11 @@ class Router {
 			this._currentRoute.leave()
 		}
 
-		// console.log(pathname)
-		// if(this.isLogin() === false && (pathname !== '/auth' || pathname !== '/registration')) {
-		// 	this.go('/auth')
-		// 	return
-		// }
-
 		this._currentRoute = route
 		route.render()
 	}
 
 	go(pathname) {
-		console.log(pathname)
 		this.history.pushState({}, '', pathname)
 		this._onRoute(pathname)
 	}

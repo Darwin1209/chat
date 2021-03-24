@@ -20,13 +20,6 @@ export default class Main extends Block {
 				}),
 				new Chat({}),
 			],
-			events: {
-				click: (e) => {
-					const { target } = e
-					console.log(target)
-					// if()
-				},
-			},
 		})
 	}
 

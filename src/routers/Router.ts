@@ -52,10 +52,11 @@ class Router {
 		}
 
 		this._currentRoute = route
-		route.render(route, pathname)
+		route.render()
 	}
 
 	go(pathname) {
+		console.log(pathname)
 		this.history.pushState({}, '', pathname)
 		this._onRoute(pathname)
 	}

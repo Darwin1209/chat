@@ -13,7 +13,6 @@ type Event = {
 
 export default class ProfileComp extends Block {
 	constructor(props: Props) {
-		console.log(props)
 		super('div', {
 			className: 'container flex',
 			events: {

@@ -38,6 +38,10 @@ export default class Route {
 	}
 
 	render() {
+		const { nameRoute } = this._props
+		const title = document.head.querySelector('title')
+		title.textContent = nameRoute
+
 		if (!this._block) {
 			this._block = new this._blockClass()
 			renderDom(this._props.rootQuery, this._block)

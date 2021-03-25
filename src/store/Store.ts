@@ -16,6 +16,5 @@ export default class Store {
 	}
 
 	setData(page: string, payload: any) {
-		this.data[page] = { ...this.data[page], ...payload }
-	}
+		this.data[page] = payload
 }

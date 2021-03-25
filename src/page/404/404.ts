@@ -28,6 +28,5 @@ export default class E404 extends Block {
 
 	componentDidRender(): void {
 		renderChildren(this.element, this.props.components)
-		replaceLink(this.element)
 	}
 }

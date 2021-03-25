@@ -1,5 +1,6 @@
 import { EventBus } from '../utils/EventBus.js'
 import Router from '../routers/Router.js'
+import { replaceLink } from '../utils/replaceLink.js'
 
 export interface Props {
 	[key: string]: any
@@ -52,6 +53,7 @@ class Block {
 		eventBus.on(Block.EVENTS.FLOW_RENDER, this._render.bind(this))
 		eventBus.on(Block.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this))
 		eventBus.on(Block.EVENTS.FLOW_CDR, this._componentDidRender.bind(this))
+		eventBus.on(Block.EVENTS.FLOW_CDR, replaceLink.bind(this))
 	}
 
 	_createResources() {
@@ -75,9 +77,7 @@ class Block {
 		this.eventBus.emit(Block.EVENTS.FLOW_RENDER)
 	}
 
-	componentDidMount() {
-		
-	}
+	componentDidMount() {}
 
 	_componentDidUpdate(oldProps: Props, newProps: Props) {
 		const response = this.componentDidUpdate(oldProps, newProps)
@@ -88,7 +88,6 @@ class Block {
 	}
 
 	componentDidUpdate(oldProps: Props, newProps: Props): boolean {
-		console.log(oldProps, newProps)
 		return true
 	}
 
@@ -117,7 +116,6 @@ class Block {
 		this._addEvents()
 
 		this.eventBus.emit(Block.EVENTS.FLOW_CDR)
-		
 	}
 
 	// Переопределяется пользователем. Необходимо вернуть разметку

@@ -28,6 +28,5 @@ export default class E500 extends Block {
 
 	componentDidRender(): void {
 		renderChildren(this.element, this.props.components)
-		replaceLink(this.element)
 	}
 }

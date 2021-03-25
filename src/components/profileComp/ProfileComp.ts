@@ -4,6 +4,7 @@ import { template } from './ProfileComp.tmp.js'
 import { compile } from '../../utils/templator.js'
 
 import { blur, submit } from './functions.js'
+import Router from '../../routers/Router.js'
 
 type Event = {
 	preventDefault(): void
@@ -29,6 +30,11 @@ export default class ProfileComp extends Block {
 							...this.props.context,
 							changeAvatar: false,
 						}
+					}
+
+					if (e.target.className.includes('info__submit')) {
+						console.log('hey')
+						new Router('#root').go('/profile')
 					}
 				},
 				blur,

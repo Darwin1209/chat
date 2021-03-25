@@ -1,14 +1,17 @@
+import Store from '../../store/Store.js'
 import Router from '../../routers/Router.js'
 
 import Block from '../../modules/block.js'
 import Aside from '../../components/aside/index.js'
 import Chat from '../../components/chat/index.js'
 
+import { getChat, getUser } from '../../api/Controlers.js'
+
 import { renderChildren } from '../../utils/renderChildren.js'
-import { replaceLink } from '../../utils/replaceLink.js'
 import { listText } from './mock.js'
 
 const router = new Router('#root')
+const store = new Store()
 
 export default class Main extends Block {
 	constructor() {
@@ -16,7 +19,7 @@ export default class Main extends Block {
 			className: 'container flex',
 			components: [
 				new Aside({
-					items: listText,
+					items: [],
 				}),
 				new Chat({}),
 			],
@@ -28,13 +31,12 @@ export default class Main extends Block {
 	}
 
 	componentDidRender(): void {
-		const login: boolean = Boolean(sessionStorage.getItem('login'))
+		const login: boolean = Boolean(localStorage.getItem('login'))
 		if (login !== true) {
 			router.go('/auth')
 			this.hide()
 			return
 		}
 		renderChildren(this.element, this.props.components)
-		replaceLink(this.element)
 	}
 }

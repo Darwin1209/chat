@@ -41,7 +41,11 @@ export const template: string = `
 
     {{/each}}
 
-    {{#if context.changeData}} <button type="submit" class="info__submit">Сохранить</button> {{/if}}
+    {{#if context.changeData}} 
+      <button type="submit" class="info__submit info__submit_data">
+        Сохранить
+      </button> 
+    {{/if}}
 
     {{#if context.changePass}}
       <button type="submit" class="info__submit info__submit_pass">
@@ -59,12 +63,12 @@ export const template: string = `
       >
     </li>
     <li class="list-action__item">
-      <a href="change-pass" class="list-action__link"
-        >Изменить пароль</a
-      >
+      <a href="change-pass" class="list-action__link">
+        Изменить пароль
+      </a>
     </li>
     <li class="list-action__item">
-      <a href="" class="list-action__link list-action__link_red">Выйти</a>
+      <button href="" class="list-action__link list-action__link_red button_logout">Выйти</button>
     </li>
   </ul>
   {{/if}}

@@ -1,19 +1,3 @@
-:root {
-	--main-blue: #3369f3;
-	--main-red: #ff2f2f;
-	--main-text: #1e1e1e;
-}
-
-* {
-	box-sizing: border-box;
-}
-
-.body {
-	font-family: Inter;
-	margin: 0;
-	padding: 0;
-}
-
 .main {
 	display: flex;
 	align-items: center;
@@ -31,17 +15,16 @@
 	border-radius: 12px;
 	padding: 30px;
 	padding-top: 50px;
-}
 
-.form-reg_registr {
+	&_registr {
 		height: 615px;
 	}
 
-.form-reg_autoriz {
+	&_autoriz {
 		height: 450px;
 	}
 
-.form-reg__title {
+	&__title {
 		margin: 0;
 		margin-bottom: 57px;
 		text-align: center;
@@ -51,12 +34,12 @@
 		color: var(--main-text);
 	}
 
-.form-reg__wrap-input {
+	&__wrap-input {
 		position: relative;
 		margin-bottom: 40px;
 	}
 
-.form-reg__title-input {
+	&__title-input {
 		position: absolute;
 		left: 0;
 		top: -px;
@@ -65,13 +48,13 @@
 		line-height: 9px;
 		color: #999999;
 		transition: all 0.2s;
-  }
 
-.form-reg__title-input_active {
+		&_active {
 			transform: translateY(-17px);
 		}
-
-.form-reg__valid-input {
+  }
+  
+  &__valid-input {
     position: absolute;
     left: 0;
     top: 32px;
@@ -82,13 +65,13 @@
     color: #FF2F2F;
     opacity: 0;
     transition: all 0.3s;
-  }
 
-.form-reg__valid-input_active {
+    &_active {
       opacity: 1;
     }
+  }
 
-.form-reg__input {
+	&__input {
 		width: 100%;
 		border: none;
 		padding: 0;
@@ -97,21 +80,22 @@
 		font-weight: 500;
 		font-size: 13px;
 		line-height: 13px;
-	}
 
-.form-reg__input:focus {
+		&:focus {
 			outline: none;
 		}
 
-.form-reg__input_type-common {
+
+		&_type-common {
 			color: var(--main-text);
 		}
 
-.form-reg__input_type-password {
+		&_type-password {
 			color: var(--main-red);
 		}
+	}
 
-.form-reg__submit {
+	&__submit {
 		margin-top: auto;
 		padding: 12px;
 		width: 100%;
@@ -126,7 +110,7 @@
 		color: #ffffff;
 	}
 
-.form-reg__link {
+	&__link {
 		margin: 0 auto;
 		margin-top: 14px;
 		font-weight: 500;
@@ -134,8 +118,9 @@
 		line-height: 11px;
 		text-decoration: none;
 		color: var(--main-blue);
-	}
 
-.form-reg__link:visited {
+		&:visited {
 			color: var(--main-blue);
 		}
+	}
+}

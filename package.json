@@ -8,7 +8,8 @@
     "dev": "tsc --watch",
     "compile": "tsc",
     "zip": "zip -r build.zip static package.json server.js README.md",
-    "test": "./node_modules/.bin/mocha"
+    "postcss": "postcss ./my_folder/css/*.css --dir ./static/css/ --watch"
+
   },
   "keywords": [],
   "author": "",
@@ -37,6 +38,7 @@
     "@types/chai": "^4.2.15",
     "@types/mocha": "^8.2.1",
     "chai": "^4.3.4",
-    "mocha": "^8.3.2"
+    "mocha": "^8.3.2",
+    "postcss-cli": "^8.3.1"
   }
 }

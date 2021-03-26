@@ -96,3 +96,47 @@ export function getChat() {
 			})
 	})
 }
+
+export function addUser(chatId: number, user: string) {
+	return new Promise((res, reject) => {
+		api
+			.put('/chats/users', {
+				data: {
+					users: [user],
+					chatId
+				},
+				timeout: 3000,
+				headers: headersJson,
+			})
+			.then(({ response }) => {
+				const data = JSON.parse(response)
+				res(data)
+			})
+			.catch((e) => {
+				console.error(e)
+				reject(e)
+			})
+	})
+}
+
+export function removeUser(chatId: number, user: string) {
+	return new Promise((res, reject) => {
+		api
+			.delete('/chats/users', {
+				data: {
+					users: [user],
+					chatId,
+				},
+				timeout: 3000,
+				headers: headersJson,
+			})
+			.then(({ response }) => {
+				const data = JSON.parse(response)
+				res(data)
+			})
+			.catch((e) => {
+				console.error(e)
+				reject(e)
+			})
+	})
+}

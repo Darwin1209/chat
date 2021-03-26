@@ -1,8 +1,30 @@
 export const template: string = `
+  {{#if context.modal.active}} 
+    <div class="chat-modal">
+      <form class="chat-modal__form" data-type={{context.modal.action}}>
+        <button class="chat-modal__cross" type="reset">
+          <div class="plus plus_rotate"></div>
+        </button>
+        <p class="chat-modal__title">{{context.modal.title}}</p>
+        <div class="chat-modal__wrapper-input">
+          <label class="chat-modal__label">Логин</label>
+          <input type="text" class="chat-modal__input" required/>
+        </div>
+        <button type="submit" class="chat-modal__submit">
+          {{context.modal.button}}
+        </button>
+        <p class="chat-modal__response"></p>
+      </form>
+    </div>
+  {{/if}}
+
+
   <div class="header-view">
     <div class="align">
-      <div class="header-view__wrap-img"></div>
-      <div class="header-view__name">Вадим</div>
+      <div class="header-view__wrap-img">
+        {{#if chat.avatar}}<img class="chat__img" src={{this.avatar}}/>{{/if}}
+      </div>
+      <div class="header-view__name">{{chat.title}}</div>
     </div>
     <button class="header-view__button">
       <div class="button">
@@ -11,6 +33,17 @@ export const template: string = `
         <div class="button__dot"></div>
       </div>
     </button>
+
+    <div class="header-view__actions actions">
+      <button class="actions__button user-add">
+        <div class="plus"></div>
+        <span>Добавить пользователя</span>
+      </button>
+      <button class="actions__button user-remove">
+        <div class="plus plus_rotate"></div>
+        <span>Удалить пользователя</span>
+      </button>
+    </div>
   </div>
 
   <section class="messages">

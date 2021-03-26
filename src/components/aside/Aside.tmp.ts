@@ -11,9 +11,9 @@ export const template: string = `
 <ul class="chats-list">
   {{#each list}}
     <li class="chats-list__item">
-    <div class="chat">
+    <div class="chat {{#if this.active}}chat_active{{/if}}" data-chat={{this.id}}>
       <div class="chat__wrap-img">
-        <img class="chat__img" />
+        {{#if this.avatar}}<img class="chat__img" src={{this.avatar}}/>{{/if}}
       </div>
       <div>
         <p class="chat__name">{{this.title}}</p>

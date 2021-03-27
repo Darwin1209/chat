@@ -103,7 +103,7 @@ export function addUser(chatId: number, user: string) {
 			.put('/chats/users', {
 				data: {
 					users: [user],
-					chatId
+					chatId,
 				},
 				timeout: 3000,
 				headers: headersJson,
@@ -130,6 +130,59 @@ export function removeUser(chatId: number, user: string) {
 				timeout: 3000,
 				headers: headersJson,
 			})
+			.then(({ response }) => {
+				const data = JSON.parse(response)
+				res(data)
+			})
+			.catch((e) => {
+				console.error(e)
+				reject(e)
+			})
+	})
+}
+
+export function changeUser(user: any) {
+	return new Promise((res, reject) => {
+		api
+			.put('/user/profile', {
+				data: { ...user },
+				headers: headersJson,
+				timeout: 3000,
+			})
+			.then(({ response }) => {
+				const data = JSON.parse(response)
+				res(data)
+			})
+			.catch((e) => {
+				console.error(e)
+				reject(e)
+			})
+	})
+}
+
+export function changePassword(user: any) {
+	return new Promise((res, reject) => {
+		api
+			.put('/user/password', {
+				data: { ...user },
+				headers: headersJson,
+				timeout: 3000,
+			})
+			.then(({ response }) => {
+				const data = JSON.parse(response)
+				res(data)
+			})
+			.catch((e) => {
+				console.error(e)
+				reject(e)
+			})
+	})
+}
+
+export function changeAvatar(avata: any) {
+	return new Promise((res, reject) => {
+		api
+			.put('/user/profile/avatar', { data: avata, headers: {}, timeout: 3000 })
 			.then(({ response }) => {
 				const data = JSON.parse(response)
 				res(data)

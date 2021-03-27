@@ -98,6 +98,7 @@
 .info {
 	width: 510px;
 	&__item {
+		position: relative;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
@@ -196,10 +197,10 @@
 		text-decoration: none;
 		color: var(--main-blue);
 		&_red {
-      color: var(--main-red);
-      border: none;
-      padding:0;
-      background: none;
+			color: var(--main-red);
+			border: none;
+			padding: 0;
+			background: none;
 		}
 	}
 }
@@ -248,6 +249,10 @@
 		text-align: center;
 		text-decoration-line: underline;
 		color: var(--main-blue);
+	}
+
+	&__input {
+		display: none;
 	}
 
 	&__submit {

@@ -12,6 +12,7 @@ export default class Profile extends Block {
 				new ProfileComp({
 					context: {
 						changeData: true,
+						action: 'data',
 						fields,
 					},
 				}),

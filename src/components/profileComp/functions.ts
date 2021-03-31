@@ -5,7 +5,7 @@ import {
 	changePassword,
 	changeUser,
 	changeAvatar,
-} from '../../api/Controlers.js'
+} from '../../controlers/Controlers.js'
 import { Validation } from '../../utils/validations.js'
 
 const CLASS_LABEL_VALID: string = 'info__valid_active'
@@ -25,11 +25,9 @@ export function submit(e: Event): void {
 	const action: string = form.dataset.type || 'none'
 
 	if (action === 'avatar') {
-		console.log('hey')
+		const avatar: HTMLInputElement = form.querySelector('input').files[0]
 
-		const formData = new FormData(form)
-
-		changeAvatar(formData)
+		changeAvatar(avatar)
 			.then((resp: any) => store.setData('user', resp))
 			.catch((e) => {
 				console.error(e)

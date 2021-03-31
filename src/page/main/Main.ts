@@ -5,13 +5,13 @@ import Block from '../../modules/block.js'
 import Aside from '../../components/aside/index.js'
 import Chat from '../../components/chat/index.js'
 
-import { getChat, getUser } from '../../api/Controlers.js'
+// import { getChat, getUser } from '../../controlers/Controlers.js'
 
 import { renderChildren } from '../../utils/renderChildren.js'
-import { listText } from './mock.js'
+import UserController from '../../controlers/userControler.js'
 
 const router = new Router('#root')
-const store = new Store()
+const store = Store.getInstance()
 
 export default class Main extends Block {
 	constructor() {
@@ -24,6 +24,14 @@ export default class Main extends Block {
 				new Chat({}),
 			],
 		})
+
+		store.eventBus.on('user-failed', () => {
+			router.go('/auth')
+		})
+
+		store.eventBus.on('get-user', (response) => {
+			store.setData('user', response)
+		})
 	}
 
 	render() {
@@ -31,11 +39,8 @@ export default class Main extends Block {
 	}
 
 	componentDidRender(): void {
-		const login: boolean = Boolean(localStorage.getItem('login'))
-		if (login !== true) {
-			router.go('/auth')
-			this.hide()
-			return
+		if (store.getData('user') === undefined) {
+			UserController.getUser()
 		}
 		renderChildren(this.element, this.props.components)
 	}

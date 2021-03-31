@@ -20,8 +20,6 @@ type Options = {
 	retries?: number
 }
 
-// type StringIndexed = Record<string, any>
-
 class HTTPTransport {
 	_baseUrl: string
 

@@ -1,7 +1,7 @@
 import { EventBus } from './../utils/EventBus.js'
 
 export default class Store {
-	static __instance: any
+	static __instance: Store
 	data: any
 	eventBus: EventBus
 	_events: object
@@ -22,5 +22,9 @@ export default class Store {
 
 	setData(page: string, payload: any) {
 		this.data[page] = payload
+	}
+
+	static getInstance() {
+		return this.__instance
 	}
 }

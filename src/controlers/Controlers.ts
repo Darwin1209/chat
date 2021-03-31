@@ -1,4 +1,4 @@
-import HTTPTransport from './Fetch.js'
+import HTTPTransport from '../api/http.js'
 import Store from '../store/Store.js'
 
 const api = new HTTPTransport('https://ya-praktikum.tech/api/v2')
@@ -179,10 +179,20 @@ export function changePassword(user: any) {
 	})
 }
 
-export function changeAvatar(avata: any) {
+export function changeAvatar(avatar) {
+	console.log(avatar)
+	const formData = new FormData()
+	formData.append('avatar', avatar)
+
 	return new Promise((res, reject) => {
 		api
-			.put('/user/profile/avatar', { data: avata, headers: {}, timeout: 3000 })
+			.put('/user/profile/avatar', {
+				data: formData,
+				headers: {
+					'Content-Type': 'multipart/form-data',
+				},
+				timeout: 3000,
+			})
 			.then(({ response }) => {
 				const data = JSON.parse(response)
 				res(data)

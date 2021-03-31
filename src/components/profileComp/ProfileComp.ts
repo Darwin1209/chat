@@ -7,7 +7,7 @@ import { template } from './ProfileComp.tmp.js'
 import { compile } from '../../utils/templator.js'
 
 import { blur, submit, click } from './functions.js'
-import { getUser } from '../../api/Controlers.js'
+import { getUser } from '../../controlers/Controlers.js'
 
 const router = new Router('#root')
 const store = new Store()

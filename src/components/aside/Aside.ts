@@ -5,7 +5,7 @@ import Block, { Props } from '../../modules/block.js'
 import { compile } from '../../utils/templator.js'
 import { template } from './Aside.tmp.js'
 
-import { getChat } from '../../api/Controlers.js'
+import { getChat } from '../../controlers/Controlers.js'
 
 const store = new Store()
 

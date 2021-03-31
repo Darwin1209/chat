@@ -61,6 +61,12 @@
 		background-color: #efefef;
 		border-radius: 50%;
 		z-index: 1;
+		overflow: hidden;
+	}
+
+	&__img {
+		width: 130px;
+		height: 130px;
 	}
 
 	&__name {
@@ -252,7 +258,7 @@
 	}
 
 	&__input {
-		display: none;
+		/* display: none; */
 	}
 
 	&__submit {
@@ -270,4 +276,12 @@
 		border-radius: 8px;
 		border: none;
 	}
+}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
 }

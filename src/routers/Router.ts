@@ -1,7 +1,7 @@
 import Route from './Route.js'
 
 class Router {
-	static __instance: any
+	private static __instance: Router
 	routes: Route[]
 	history: any
 	_currentRoute: string | null
@@ -21,19 +21,16 @@ class Router {
 	}
 
 	use(pathname: string, block: any, nameRoute: string = 'title') {
-		// Вместо трёх точек напишем отдельную сущность — об этом речь пойдёт ниже
 		const route = new Route(pathname, block, {
 			rootQuery: this._rootQuery,
 			nameRoute,
 		})
 
 		this.routes.push(route)
-		// Возврат this — основа паттерна "Builder" («Строитель»)
 		return this
 	}
 
 	start() {
-		// Реагируем на изменения в адресной строке и вызываем перерисовку
 		window.onpopstate = (event) => {
 			this._onRoute(event.currentTarget.location.pathname)
 		}

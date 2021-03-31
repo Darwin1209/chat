@@ -1,15 +1,15 @@
-import { UserApi, Login, Registration } from '../api/userApi.js'
+import { AuthApi, Login, Registration } from '../api/authApi.js'
 import Router from '../routers/Router.js'
 import Store from '../store/Store.js'
 
 const router = new Router('#root')
 const store = Store.getInstance()
 
-const userApi = new UserApi()
+const authApi = new AuthApi()
 
 export default class UserController {
 	static getUser() {
-		userApi
+		authApi
 			.getUser()
 			.then((response) => {
 				console.log(response)
@@ -23,7 +23,7 @@ export default class UserController {
 	}
 
 	static login(form: Login) {
-		userApi
+		authApi
 			.login(form)
 			.then((response) => {
 				if (response === 'OK') {
@@ -37,7 +37,7 @@ export default class UserController {
 	}
 
 	static registration(form: Registration) {
-		userApi
+		authApi
 			.registration(form)
 			.then((response) => {
 				if (response === 'OK') {
@@ -51,7 +51,7 @@ export default class UserController {
 	}
 
 	static logout() {
-		userApi
+		authApi
 			.logout()
 			.then((response) => {
 				if (response === 'OK') {

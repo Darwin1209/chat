@@ -22,7 +22,7 @@ export type Login = {
 	password: 'string'
 }
 
-export class UserApi {
+export class AuthApi {
 	async getUser() {
 		try {
 			const { response, status } = await api.get(GET_USER)

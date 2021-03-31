@@ -8,7 +8,7 @@ import Form from '../../components/form/index.js'
 import { renderChildren } from '../../utils/renderChildren.js'
 import { fields } from './mock.js'
 
-import UserController from '../../controlers/userControler.js'
+import UserController from '../../controlers/authControler.js'
 
 const router = new Router('#root')
 const store = Store.getInstance()

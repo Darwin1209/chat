@@ -1,8 +1,6 @@
 import { Validation } from '../../utils/validations.js'
-import { login, registration } from '../../controlers/Controlers.js'
-import Router from '../../routers/Router.js'
 
-import UserController from '../../controlers/userControler.js'
+import UserController from '../../controlers/authControler.js'
 
 const CLASS_LABEL_INPUT: string = 'form-reg__title-input_active'
 const CLASS_LABEL_VALID: string = 'form-reg__valid-input_active'

@@ -1,10 +1,6 @@
 import Block, { Props } from '../modules/block.js'
 import { renderDom } from '../utils/renderDom.js'
 
-function isEqual(lhs: string, rhs: string): boolean {
-	return lhs === rhs
-}
-
 export default class Route {
 	_pathname: string
 	_blockClass: any
@@ -34,7 +30,7 @@ export default class Route {
 	}
 
 	match(pathname: string) {
-		return isEqual(pathname, this._pathname)
+		return this.isEqual(pathname, this._pathname)
 	}
 
 	render() {
@@ -49,5 +45,9 @@ export default class Route {
 		}
 
 		this._block.show()
+	}
+
+	private isEqual(lhs: string, rhs: string): boolean {
+		return lhs === rhs
 	}
 }

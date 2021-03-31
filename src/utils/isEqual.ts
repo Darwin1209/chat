@@ -1,18 +1,3 @@
-type Indexed<T = {}> = {
-	[key in string]: T
-}
-
-function isEqualMy(a: Indexed, b: Indexed): boolean {
-	for (let key in a) {
-		if (typeof a[key] === 'object' && typeof b[key] === 'object') {
-			isEqual(a[key], b[key])
-		} else if (a[key] !== b[key]) {
-			return false
-		}
-	}
-	return true
-}
-
 type PlainObject<T = any> = {
 	[k in string]: T
 }
@@ -35,7 +20,6 @@ function isArrayOrObject(value: unknown): value is [] | PlainObject {
 }
 
 function isEqual(lhs: PlainObject, rhs: PlainObject) {
-	// Сравнение количества ключей объектов и массивов
 	if (Object.keys(lhs).length !== Object.keys(rhs).length) {
 		return false
 	}

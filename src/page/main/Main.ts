@@ -1,14 +1,14 @@
 import Store from '../../store/Store.js'
 import Router from '../../routers/Router.js'
+import AuthController from '../../controlers/authControler.js'
 
 import Block from '../../modules/block.js'
+
+//Попытка использовать импорт по умолчанию, но не знаю как использовать без webpack
 import Aside from './aside/index.js'
 import Chat from './chat/index.js'
 
-// import { getChat, getUser } from '../../controlers/Controlers.js'
-
 import { renderChildren } from '../../utils/renderChildren.js'
-import AuthController from '../../controlers/authControler.js'
 
 const router = new Router('#root')
 const store = Store.getInstance()

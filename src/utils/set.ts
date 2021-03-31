@@ -26,12 +26,4 @@ function set(object: Indexed | any, path: string, value: any): Indexed | any {
 	return object
 }
 
-/*
- * set(
- *  { foo: 5 },
- *  'bar.baz',
- *  10
- *); // { foo: 5, bar: { baz: 10 } }
- * set(3, 'foo.bar', 'baz'); // 3
- */
 export default set

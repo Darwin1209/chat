@@ -14,32 +14,3 @@ function merge(lhs: Indexed, rhs: Indexed): Indexed {
 }
 
 export default merge
-
-merge(
-	{
-		a: {
-			b: {
-				a: 2,
-			},
-		},
-		d: 5,
-	},
-	{
-		a: {
-			b: {
-				c: 1,
-			},
-		},
-	}
-)
-/*
-  {
-    a: {
-      b: {
-        a: 2,
-        c: 1,
-      }
-    },
-    d: 5,
-  }
-*/

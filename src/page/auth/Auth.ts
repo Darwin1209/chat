@@ -6,7 +6,7 @@ import Form from '../../components/form/index.js'
 
 import { renderChildren } from '../../utils/renderChildren.js'
 
-import UserController from '../../controlers/authControler.js'
+import AuthController from '../../controlers/authControler.js'
 
 import { fields } from './mock.js'
 
@@ -48,7 +48,7 @@ export default class Auth extends Block {
 
 	componentDidRender(): void {
 		if (store.getData('user') === undefined) {
-			UserController.getUser()
+			AuthController.getUser()
 		}
 		renderChildren(this.element, this.props.components)
 	}

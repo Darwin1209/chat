@@ -1,5 +1,5 @@
 import HTTPTransport from './http.js'
-import { BASE_URL, GET_USER, SIGN_IN, SIGN_UP, LOGOUT } from './constant.js'
+import { BASE_URL, PROFILE, AVATAR, PASSWORD } from './constant.js'
 
 const api = new HTTPTransport(BASE_URL)
 
@@ -7,26 +7,32 @@ const headersJson = {
 	'Content-Type': 'application/json',
 }
 
-export type Registration = {
+export type Profile = {
 	first_name: 'string'
 	second_name: 'string'
+	display_name: 'string'
 	login: 'string'
 	email: 'string'
-	password: 'string'
-	passwordTwo?: 'string'
 	phone: 'string'
 }
 
-export type Login = {
-	login: 'string'
-	password: 'string'
+export type Avatar = {
+	avatar: File
 }
 
-export class AuthApi {
-	async getUser() {
+export type Password = {
+	oldPassword: 'string'
+	newPassword: 'string'
+}
+
+export class UserApi {
+	async changeProfile(form: Profile) {
 		try {
-			const { response, status } = await api.get(GET_USER)
-			console.log(status)
+			const { response, status } = await api.put(PROFILE, {
+        data: form,
+        headers: headersJson,
+			})
+
 			if (status !== 200) {
 				throw new Error(response)
 			}
@@ -36,12 +42,13 @@ export class AuthApi {
 		}
 	}
 
-	async registration(form: Registration) {
+	async changeAvatar(form: FormData) {
 		try {
-			const { response, status } = await api.post(SIGN_UP, {
+			const { response, status } = await api.put(AVATAR, {
 				data: form,
 				headers: headersJson,
 			})
+
 			if (status !== 200) {
 				throw new Error(response)
 			}
@@ -51,24 +58,13 @@ export class AuthApi {
 		}
 	}
 
-	async login(form: Login) {
+	async changePassword(form: Password) {
 		try {
-			const { response, status } = await api.post(SIGN_IN, {
+			const { response, status } = await api.put(PASSWORD, {
 				data: form,
 				headers: headersJson,
 			})
-			if (status !== 200) {
-				throw new Error(response)
-			}
-			return JSON.parse(response)
-		} catch (err) {
-			throw new Error(err)
-		}
-	}
 
-	async logout() {
-		try {
-			const { response, status } = await api.post(LOGOUT, {})
 			if (status !== 200) {
 				throw new Error(response)
 			}

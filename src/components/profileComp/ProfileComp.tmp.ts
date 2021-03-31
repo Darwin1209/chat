@@ -26,7 +26,7 @@ export const template: string = `
       </div>
       <div class="person__change">Поменять аватар</div>
     </div>
-    <p class="person__name">{{#if context.profile}}{{userInfo.display_name}}{{else}}&nbsp;{{/if}}</p>
+    <p class="person__name">{{#if context.profile}}{{userName}}{{else}}&nbsp;{{/if}}</p>
   </div>
   <form class="profile__wrap-info info" data-type={{context.action}}>
 

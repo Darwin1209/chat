@@ -8,7 +8,7 @@ import Form from '../../components/form/index.js'
 import { renderChildren } from '../../utils/renderChildren.js'
 import { fields } from './mock.js'
 
-import UserController from '../../controlers/authControler.js'
+import AuthController from '../../controlers/authControler.js'
 
 const router = new Router('#root')
 const store = Store.getInstance()
@@ -41,13 +41,9 @@ export default class Registration extends Block {
 		})
 	}
 
-	// render() {
-	// 	return ''
-	// }
-
 	componentDidRender(): void {
 		if (store.getData('user') === undefined) {
-			UserController.getUser()
+			AuthController.getUser()
 		}
 		renderChildren(this.element, this.props.components)
 	}

@@ -1,17 +1,9 @@
-import Store from '../../store/Store.js'
-import Router from '../../routers/Router.js'
-
-import {
-	changePassword,
-	changeUser,
-	changeAvatar,
-} from '../../controlers/Controlers.js'
 import { Validation } from '../../utils/validations.js'
 
 const CLASS_LABEL_VALID: string = 'info__valid_active'
 
-const store = new Store()
-const router = new Router('#root')
+import UserController from '../../controlers/userControler.js'
+import AuthController from '../../controlers/authControler.js'
 
 type Event = {
 	preventDefault(): void
@@ -27,12 +19,7 @@ export function submit(e: Event): void {
 	if (action === 'avatar') {
 		const avatar: HTMLInputElement = form.querySelector('input').files[0]
 
-		changeAvatar(avatar)
-			.then((resp: any) => store.setData('user', resp))
-			.catch((e) => {
-				console.error(e)
-				alert('Произошла ошибка')
-			})
+		UserController.changeAvatar(avatar)
 
 		return
 	}
@@ -61,24 +48,12 @@ export function submit(e: Event): void {
 	})
 
 	if (action === 'data') {
-		changeUser(data)
-			.then((resp: any) => store.setData('user', resp))
-			.catch((e) => {
-				console.error(e)
-			})
+		UserController.changeProfile(data)
 	}
 
 	if (action === 'pass') {
 		delete data.newPasswordCopy
-		changePassword(data)
-			.then((resp) => {
-				console.log(resp)
-				router.go('/profile')
-			})
-			.catch((e) => {
-				console.error(e)
-				alert('Неверно введён пароль')
-			})
+		UserController.changePassword(data)
 	}
 }
 
@@ -95,8 +70,6 @@ export function blur(e: Event): void {
 
 	if (valid !== 'passTwo') {
 		const valideted: boolean = Validation[valid!](inp.value)
-		console.log(valideted)
-
 		valideted
 			? labelValid?.classList.remove(CLASS_LABEL_VALID)
 			: labelValid?.classList.add(CLASS_LABEL_VALID)
@@ -104,13 +77,6 @@ export function blur(e: Event): void {
 		let pass = document.querySelector(
 			'input[data-valid=pass]'
 		) as HTMLInputElement
-		// for (let i = 0; i < e.currentTarget.elements.length; i++) {
-		// 	const item = e.currentTarget.elements[i] as HTMLInputElement
-		// 	if (item.name === 'password') {
-		// 		pass = item.value
-		// 		break
-		// 	}
-		// }
 		const valideted: boolean = Validation[valid](inp.value, pass.value)
 		valideted
 			? labelValid?.classList.remove(CLASS_LABEL_VALID)
@@ -118,11 +84,14 @@ export function blur(e: Event): void {
 	}
 }
 
-export function click(e: Event, target): void {
-	if (e.target.className === 'person__change') {
-		target.props.context = {
-			...target.props.context,
-			changeAvatar: true,
+export function click(e: Event): void {
+	const item = e.target
+	const closestItem: HTMLElement = item.closest('button')
+
+	if (closestItem?.classList?.contains('button_logout')) {
+		const logout = confirm('Вы уверены?')
+		if (logout) {
+			AuthController.logout()
 		}
 	}
 }

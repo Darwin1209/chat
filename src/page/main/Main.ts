@@ -8,7 +8,7 @@ import Chat from '../../components/chat/index.js'
 // import { getChat, getUser } from '../../controlers/Controlers.js'
 
 import { renderChildren } from '../../utils/renderChildren.js'
-import UserController from '../../controlers/authControler.js'
+import AuthController from '../../controlers/authControler.js'
 
 const router = new Router('#root')
 const store = Store.getInstance()
@@ -40,7 +40,7 @@ export default class Main extends Block {
 
 	componentDidRender(): void {
 		if (store.getData('user') === undefined) {
-			UserController.getUser()
+			AuthController.getUser()
 		}
 		renderChildren(this.element, this.props.components)
 	}

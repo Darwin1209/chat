@@ -7,16 +7,17 @@ const store = Store.getInstance()
 
 const authApi = new AuthApi()
 
-export default class UserController {
+export default class AuthController {
 	static getUser() {
+		console.log('hey')
 		authApi
 			.getUser()
 			.then((response) => {
-				console.log(response)
 				store.setData('user', response)
 				store.eventBus.emit('get-user', response)
 			})
 			.catch((e) => {
+				console.log('userFailed: ', e)
 				store.eventBus.emit('user-failed')
 				console.error(e)
 			})

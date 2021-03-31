@@ -1,4 +1,3 @@
-import Router from '../../routers/Router.js'
 import Store from '../../store/Store.js'
 
 import Block, { Props } from '../../modules/block.js'
@@ -7,9 +6,9 @@ import { template } from './ProfileComp.tmp.js'
 import { compile } from '../../utils/templator.js'
 
 import { blur, submit, click } from './functions.js'
-import { getUser } from '../../controlers/Controlers.js'
 
-const router = new Router('#root')
+import AuthController from '../../controlers/authControler.js'
+
 const store = new Store()
 
 type Event = {
@@ -18,54 +17,49 @@ type Event = {
 	currentTarget: HTMLFormElement
 }
 
-const getInfo = (target) => {
-	const user = store.getData('user')
-
-	const fields = target.props.context.fields
-	console.log(user)
-	fields.forEach((el) => {
-		if (el.name in user) {
-			el.value = user[el.name]
-		}
-	})
-	console.log(target)
-	target.setProps({
-		...target.props,
-		userInfo: user,
-		context: { ...target.props.context, fields: fields },
-	})
-}
-
 export default class ProfileComp extends Block {
 	constructor(props: Props) {
+		const user = store.getData('user')
 		super('div', {
 			className: 'container flex',
 			events: {
-				click: (e) => {
-					click(e, this)
-				},
 				blur,
 				submit,
+				click,
 			},
+			user,
 			...props,
 		})
-		store.eventBus.on('getUser', getInfo)
+		store.eventBus.on('get-user', () => {
+			this.eventBus.emit('flow:render')
+		})
+		store.eventBus.on('change-user', () => {
+			this.eventBus.emit('flow:render')
+		})
+		store.eventBus.on('change-pass-failed', () => {
+			alert('Неверный пароль')
+		})
+		store.eventBus.on('change-avatar-failed', () => {
+			alert('Произошла ошибка')
+		})
 	}
 
 	render(): string {
-		const login: boolean = Boolean(localStorage.getItem('login'))
-		if (login !== true) {
-			router.go('/auth')
-			this.hide()
-			return ''
+		const user = store.getData('user')
+		if (user === undefined) {
+			AuthController.getUser()
 		}
+		//!Временный костыль, в следующей итерации решу как вынести значения
 
-		return compile(template, this?.props)
-	}
-
-	componentDidMount() {
-		getUser().then((resp) => {
-			store.eventBus.emit('getUser', this)
-		})
+		const context = this.props.context
+		if (user !== undefined) {
+			context.fields = context.fields.map((field) => ({
+				...field,
+				value: user?.[field.name],
+			}))
+		}
+		const userName = context.fields.find((el) => el.name === 'display_name')
+			?.value
+		return compile(template, { context, userName })
 	}
 }

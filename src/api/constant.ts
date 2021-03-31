@@ -8,3 +8,6 @@ export const LOGOUT: string = '/auth/logout'
 export const PROFILE: string = '/user/profile'
 export const AVATAR: string = '​/user​/profile​/avatar'
 export const PASSWORD: string = '​/user​/password'
+
+export const CHATS: string = '/chats'
+export const CHATS_USER: string = '/chats/users'

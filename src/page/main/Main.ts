@@ -2,6 +2,8 @@ import Store from '../../store/Store.js'
 import Router from '../../routers/Router.js'
 import AuthController from '../../controlers/authControler.js'
 
+//Благодарю за ссылку про архитектуру, на следующей итерации попытаюсь улучшить
+
 import Block from '../../modules/block.js'
 
 //Попытка использовать импорт по умолчанию, но не знаю как использовать без webpack
@@ -11,18 +13,13 @@ import Chat from './chat/index.js'
 import { renderChildren } from '../../utils/renderChildren.js'
 
 const router = new Router('#root')
-const store = Store.getInstance()
+const store = new Store()
 
 export default class Main extends Block {
 	constructor() {
 		super('div', {
 			className: 'container flex',
-			components: [
-				new Aside({
-					items: [],
-				}),
-				new Chat({}),
-			],
+			components: [new Aside({}), new Chat({})],
 		})
 
 		store.eventBus.on('user-failed', () => {

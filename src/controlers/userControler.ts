@@ -3,7 +3,7 @@ import Router from '../routers/Router.js'
 import Store from '../store/Store.js'
 
 const router = new Router('#root')
-const store = Store.getInstance()
+const store = new Store()
 
 const userApi = new UserApi()
 

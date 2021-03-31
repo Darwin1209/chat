@@ -1,5 +1,4 @@
 import Router from './routers/Router.js'
-import Store from './store/Store.js'
 
 import Main from './page/main/index.js'
 import Auth from './page/auth/index.js'
@@ -11,7 +10,6 @@ import E404 from './page/404/index.js'
 import E500 from './page/500/index.js'
 
 const app = new Router('#root')
-new Store()
 
 app
 	.use('/', Main, 'Главная')

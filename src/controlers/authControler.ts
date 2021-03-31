@@ -3,13 +3,12 @@ import Router from '../routers/Router.js'
 import Store from '../store/Store.js'
 
 const router = new Router('#root')
-const store = Store.getInstance()
+const store = new Store()
 
 const authApi = new AuthApi()
 
 export default class AuthController {
 	static getUser() {
-		console.log('hey')
 		authApi
 			.getUser()
 			.then((response) => {
@@ -17,7 +16,6 @@ export default class AuthController {
 				store.eventBus.emit('get-user', response)
 			})
 			.catch((e) => {
-				console.log('userFailed: ', e)
 				store.eventBus.emit('user-failed')
 				console.error(e)
 			})

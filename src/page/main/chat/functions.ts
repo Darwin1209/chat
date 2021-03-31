@@ -1,13 +1,7 @@
-import { addUser, removeUser } from '../../../controlers/Controlers.js'
+import Store from '../../../store/Store.js'
+import ChatsController from '../../../controlers/chatsControler.js'
 
-interface Action {
-	[key: string]: Function
-}
-
-const ACTIONS: Action = {
-	'user-add': addUser,
-	'user-remove': removeUser,
-}
+const store = Store.getInstance()
 
 export function click(e) {
 	const item = e.target
@@ -59,15 +53,8 @@ export function click(e) {
 		})
 	}
 
-	if (item.className.includes('chat-modal__cross')) {
-		this.setProps({
-			...this.props,
-			context: {
-				modal: {
-					active: false,
-				},
-			},
-		})
+	if (closestItem.classList.contains('chat-modal__cross')) {
+		closeModal(this)
 	}
 }
 
@@ -77,14 +64,22 @@ export function submit(e) {
 	const action: string = form.dataset.type || 'none'
 	const login: string = form.querySelector('input')?.value || ''
 	const chatID: number = store.getData('currentChat')
-	ACTIONS[action](chatID, login)
-		.then((resp: any) => {
-			console.log(resp)
-		})
-		.catch((e: any) => {
-			const text: HTMLElement =
-				form.querySelector('.chat-modal__response') || null
-			text.textContent = 'Ошибка, не существующий пользователь'
-			console.error(e)
-		})
+	if (action === 'user-add') {
+		ChatsController.addUser(login, chatID)
+	}
+
+	if (action === 'user-remove') {
+		ChatsController.removeUser(login, chatID)
+	}
+}
+
+export function closeModal(target) {
+	target.setProps({
+		...target.props,
+		context: {
+			modal: {
+				active: false,
+			},
+		},
+	})
 }

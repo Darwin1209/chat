@@ -1,13 +1,13 @@
-import Store from '../../store/Store.js'
+import Store from '../../../store/Store.js'
 
-import Block, { Props } from '../../modules/block.js'
+import Block, { Props } from '../../../modules/block.js'
 
-import { compile } from '../../utils/templator.js'
+import { compile } from '../../../utils/templator.js'
 import { template } from './Aside.tmp.js'
 
-import { getChat } from '../../controlers/Controlers.js'
+import { getChat } from '../../../controlers/Controlers.js'
 
-const store = new Store()
+const store = Store.getInstance()
 
 export default class Aside extends Block {
 	constructor(props: Props) {

@@ -2,8 +2,8 @@ import Store from '../../store/Store.js'
 import Router from '../../routers/Router.js'
 
 import Block from '../../modules/block.js'
-import Aside from '../../components/aside/index.js'
-import Chat from '../../components/chat/index.js'
+import Aside from './aside/index.js'
+import Chat from './chat/index.js'
 
 // import { getChat, getUser } from '../../controlers/Controlers.js'
 

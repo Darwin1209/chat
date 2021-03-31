@@ -6,7 +6,7 @@ https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1.
 
 ## Описание
 
-Мессенджер на нативном JavaScript.
+Мессенджер на TypeScript.
 
 ## Запуск
 

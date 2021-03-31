@@ -65,6 +65,12 @@
 		background-color: #efefef;
 		border-radius: 50%;
 		z-index: 1;
+		overflow: hidden;
+	}
+
+.person__img {
+		width: 130px;
+		height: 130px;
 	}
 
 .person__name {
@@ -259,7 +265,7 @@
 	}
 
 .modal__input {
-		display: none;
+		/* display: none; */
 	}
 
 .modal__submit {
@@ -277,3 +283,11 @@
 		border-radius: 8px;
 		border: none;
 	}
+
+.visually-hidden {
+  position: absolute;
+  clip: rect(0 0 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}

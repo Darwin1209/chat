@@ -8,7 +8,7 @@
     "dev": "tsc --watch",
     "compile": "tsc",
     "zip": "zip -r build.zip static package.json server.js README.md",
-    "postcss": "postcss ./my_folder/css/*.css --dir ./static/css/ --watch"
+    "postcss": "postcss ./src/css/*.css --dir ./static/css/ --watch"
 
   },
   "keywords": [],

@@ -1,4 +1,5 @@
 import Store from '../../store/Store.js'
+import Router from '../../routers/Router.js'
 
 import Block, { Props } from '../../modules/block.js'
 
@@ -10,12 +11,7 @@ import { blur, submit, click } from './functions.js'
 import AuthController from '../../controlers/authControler.js'
 
 const store = new Store()
-
-type Event = {
-	preventDefault(): void
-	target: HTMLFormElement
-	currentTarget: HTMLFormElement
-}
+const router = new Router('#root')
 
 export default class ProfileComp extends Block {
 	constructor(props: Props) {
@@ -32,6 +28,9 @@ export default class ProfileComp extends Block {
 		})
 		store.eventBus.on('get-user', () => {
 			this.eventBus.emit('flow:render')
+		})
+		store.eventBus.on('user-failed', () => {
+			router.go('/auth')
 		})
 		store.eventBus.on('change-user', () => {
 			this.eventBus.emit('flow:render')
@@ -53,13 +52,14 @@ export default class ProfileComp extends Block {
 
 		const context = this.props.context
 		if (user !== undefined) {
-			context.fields = context.fields.map((field) => ({
+			context.fields = context.fields.map((field: any) => ({
 				...field,
 				value: user?.[field.name],
 			}))
 		}
-		const userName = context.fields.find((el) => el.name === 'display_name')
-			?.value
+		const userName = context.fields.find(
+			(el: any) => el.name === 'display_name'
+		)?.value
 		return compile(template, { context, userName })
 	}
 }

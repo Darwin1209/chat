@@ -1,12 +1,12 @@
-import Block, { Props } from '../modules/block.js'
+import { Props } from '../modules/block.js'
 import { renderDom } from '../utils/renderDom.js'
 
 export default class Route {
 	_pathname: string
 	_blockClass: any
-	_block: Block | null
+	_block: any
 	_props: Props
-	_name: string
+	_name: string | undefined
 
 	constructor(pathname: string, view: any, props: Props) {
 		this._pathname = pathname
@@ -35,8 +35,8 @@ export default class Route {
 
 	render() {
 		const { nameRoute } = this._props
-		const title = document.head.querySelector('title')
-		title.textContent = nameRoute
+		const title = document.head.querySelector('title') || document.head
+		title.textContent = nameRoute || 'title'
 
 		if (!this._block) {
 			this._block = new this._blockClass()

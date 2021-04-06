@@ -1,5 +1,3 @@
-const HOST = ''
-
 export const template: string = `
 {{#if context.changeAvatar}}
   <div class="modal-wrapper">

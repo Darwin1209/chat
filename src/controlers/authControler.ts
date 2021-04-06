@@ -15,9 +15,8 @@ export default class AuthController {
 				store.setData('user', response)
 				store.eventBus.emit('get-user', response)
 			})
-			.catch((e) => {
+			.catch(() => {
 				store.eventBus.emit('user-failed')
-				console.error(e)
 			})
 	}
 
@@ -39,7 +38,7 @@ export default class AuthController {
 		authApi
 			.registration(form)
 			.then((response) => {
-				if (response === 'OK') {
+				if (response.id) {
 					router.go('/')
 				}
 			})

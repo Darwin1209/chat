@@ -16,7 +16,7 @@ export default class Chat extends Block {
 			...props,
 			className: 'main-wrapper',
 			events: {
-				click: (e) => {
+				click: (e: any) => {
 					click.bind(this)(e)
 				},
 				submit,
@@ -25,7 +25,7 @@ export default class Chat extends Block {
 
 		store.eventBus.on('changeChat', (id) => {
 			store.setData('currentChat', id)
-			const chat = store.getData('chats').find((el) => el.id === id)
+			const chat = store.getData('chats').find((el: any) => el.id === id)
 			this.setProps({ ...this.props, currentChat: chat })
 		})
 

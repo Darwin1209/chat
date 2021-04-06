@@ -6,8 +6,6 @@ import Block, { Props } from '../../../modules/block.js'
 import { compile } from '../../../utils/templator.js'
 import { template } from './Aside.tmp.js'
 
-import { getChat } from '../../../controlers/Controlers.js'
-
 const store = Store.getInstance()
 
 export default class Aside extends Block {
@@ -16,13 +14,13 @@ export default class Aside extends Block {
 			...props,
 			className: 'chats',
 			events: {
-				click: (e) => {
+				click: (e: any) => {
 					const item = e.target
 					if (item.className.includes('chat')) {
 						const id = Number(item.dataset.chat)
 						store.eventBus.emit('changeChat', id)
 						const chats = store.getData('chats')
-						const items = chats?.map((el) => {
+						const items = chats?.map((el: any) => {
 							if (el.id === id) {
 								return { ...el, active: true }
 							}

@@ -1,20 +1,21 @@
 import { EventBus } from '../utils/EventBus.js'
-import Router from '../routers/Router.js'
 import { replaceLink } from '../utils/replaceLink.js'
 
 export interface Props {
-	[key: string]: any
 	events?: {
 		[key: string]: (...args: any) => void
 	}
 	components?: Block[]
 	className?: string | undefined
 	items?: object[]
-	context?: {}
+	context?: any
 	list?: object[]
+	rootQuery?: string | undefined
+	nameRoute?: string
+	currentChat?: any
 }
 
-class Block {
+export default class Block {
 	props: Props
 	eventBus: EventBus
 	_events: object
@@ -88,6 +89,9 @@ class Block {
 	}
 
 	componentDidUpdate(oldProps: Props, newProps: Props): boolean {
+		if (oldProps === newProps) {
+			console.log('ident props')
+		}
 		return true
 	}
 
@@ -150,11 +154,11 @@ class Block {
 
 	_makePropsProxy(props: Props) {
 		return new Proxy(props, {
-			get(target: Props, prop: string) {
+			get(target: any, prop: string) {
 				if (prop.indexOf('_') === 0) {
 					throw new Error('Отказано в доступе')
 				}
-				const value = target[prop]
+				const value: any = target[prop]
 				return typeof value === 'function' ? value.bind(target) : value
 			},
 			set: (target, prop: string, value) => {
@@ -170,7 +174,6 @@ class Block {
 	}
 
 	_createDocumentElement(tagName: string) {
-		// Можно сделать метод, который через фрагменты в цикле создаёт сразу несколько блоков
 		const element = document.createElement(tagName)
 		element.className = this.props.className || ''
 		return element
@@ -184,5 +187,3 @@ class Block {
 		this.getContent().style.display = 'none'
 	}
 }
-
-export default Block

@@ -11,3 +11,6 @@ export const PASSWORD: string = '​/user​/password'
 
 export const CHATS: string = '/chats'
 export const CHATS_USER: string = '/chats/users'
+
+
+//На следующей итерации добавлю константы для ошибок

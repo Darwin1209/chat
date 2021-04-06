@@ -10,7 +10,7 @@ const headersJson = {
 export class ChatsApi {
 	async getChats() {
 		try {
-			const { response, status } = await api.get(CHATS)
+			const { response, status } = await api.get(CHATS, {})
 			if (status !== 200) {
 				throw new Error(response)
 			}

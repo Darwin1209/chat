@@ -4,14 +4,12 @@ export const fields: object[] = [
 		name: 'login',
 		validation: 'all',
 		label: 'Логин',
-		// validText: 'Невалидный логин',
 	},
 	{
 		type: 'password',
 		name: 'password',
 		validation: 'all',
 		label: 'Пароль',
-		// validText: 'Слабый пароль',
 		pass: true,
 	},
 ]

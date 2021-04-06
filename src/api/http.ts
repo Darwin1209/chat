@@ -1,11 +1,11 @@
 import queryStringify from './queryString.js'
 
 enum METHOD {
-	GET = 'GET',
-	POST = 'POST',
-	PUT = 'PUT',
-	PATCH = 'PATCH',
-	DELETE = 'DELETE',
+	Get = 'GET',
+	Post = 'POST',
+	Put = 'PUT',
+	Patch = 'PATCH',
+	Delete = 'DELETE',
 }
 
 interface RequestHeaders {
@@ -27,16 +27,13 @@ class HTTPTransport {
 		this._baseUrl = path
 	}
 
-	get(
-		url: string,
-		options: Options = { method: METHOD.GET }
-	): Promise<XMLHttpRequest> {
+	get(url: string, options: Options): Promise<XMLHttpRequest> {
 		const { data, timeout } = options
 		return this.request(
 			`${url}?${queryStringify(data)}`,
 			{
 				...options,
-				method: METHOD.GET,
+				method: METHOD.Get,
 			},
 			timeout
 		)
@@ -48,7 +45,7 @@ class HTTPTransport {
 			url,
 			{
 				...options,
-				method: METHOD.POST,
+				method: METHOD.Post,
 			},
 			timeout
 		)
@@ -60,7 +57,7 @@ class HTTPTransport {
 			url,
 			{
 				...options,
-				method: METHOD.DELETE,
+				method: METHOD.Delete,
 			},
 			timeout
 		)
@@ -72,7 +69,7 @@ class HTTPTransport {
 			url,
 			{
 				...options,
-				method: METHOD.PUT,
+				method: METHOD.Put,
 			},
 			timeout
 		)
@@ -88,7 +85,7 @@ class HTTPTransport {
 		return new Promise((resolve, reject) => {
 			const xhr = new XMLHttpRequest()
 			xhr.withCredentials = true
-			xhr.open(method, `${this._baseUrl}${url}`)
+			xhr.open(method || 'GET', `${this._baseUrl}${url}`)
 			xhr.timeout = timeout
 
 			if (headers !== undefined) {
@@ -109,7 +106,7 @@ class HTTPTransport {
 			xhr.onerror = handleError
 			xhr.ontimeout = handleError
 
-			if (method === METHOD.GET || !data) {
+			if (method === METHOD.Get || !data) {
 				xhr.send()
 			} else {
 				xhr.send(JSON.stringify(data))

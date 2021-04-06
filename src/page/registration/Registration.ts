@@ -36,6 +36,8 @@ export default class Registration extends Block {
 			router.go('/')
 		})
 
+		store.eventBus.on('user-failed', () => {})
+
 		store.eventBus.on('registration-failed', () => {
 			alert('Неверный логин или пароль')
 		})

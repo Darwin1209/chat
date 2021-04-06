@@ -25,7 +25,7 @@ export type Login = {
 export class AuthApi {
 	async getUser() {
 		try {
-			const { response, status } = await api.get(GET_USER)
+			const { response, status } = await api.get(GET_USER, {})
 			if (status !== 200) {
 				throw new Error(response)
 			}
@@ -59,7 +59,7 @@ export class AuthApi {
 			if (status !== 200) {
 				throw new Error(response)
 			}
-			return JSON.parse(response)
+			return (response)
 		} catch (err) {
 			throw new Error(err)
 		}
@@ -71,7 +71,7 @@ export class AuthApi {
 			if (status !== 200) {
 				throw new Error(response)
 			}
-			return JSON.parse(response)
+			return (response)
 		} catch (err) {
 			throw new Error(err)
 		}

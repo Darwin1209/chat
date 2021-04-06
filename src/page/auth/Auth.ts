@@ -37,6 +37,8 @@ export default class Auth extends Block {
 			router.go('/')
 		})
 
+		store.eventBus.on('user-failed', () => {})
+
 		store.eventBus.on('login-failed', () => {
 			alert('Неверный логин или пароль')
 		})

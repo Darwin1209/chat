@@ -1,4 +1,4 @@
-import { UserApi, Password, Profile, Avatar } from '../api/userApi.js'
+import { UserApi, Password, Profile } from '../api/userApi.js'
 import Router from '../routers/Router.js'
 import Store from '../store/Store.js'
 
@@ -12,11 +12,9 @@ export default class UserController {
 		userApi
 			.changeProfile(form)
 			.then((response) => {
-				if (response === 'OK') {
-					store.setData('user', response)
-					store.eventBus.emit('change-user', response)
-					router.go('/profile')
-				}
+				store.setData('user', response)
+				store.eventBus.emit('change-user', response)
+				router.go('/profile')
 			})
 			.catch((e) => {
 				store.eventBus.emit('change-user-failed')
@@ -27,10 +25,8 @@ export default class UserController {
 	static changePassword(form: Password) {
 		userApi
 			.changePassword(form)
-			.then((response) => {
-				if (response === 'OK') {
-					router.go('/profile')
-				}
+			.then(() => {
+				router.go('/profile')
 			})
 			.catch((e) => {
 				store.eventBus.emit('change-pass-failed')
@@ -38,19 +34,18 @@ export default class UserController {
 			})
 	}
 
-	static changeAvatar(avatar: Avatar) {
+	static changeAvatar(avatar: any) {
 		const formData = new FormData()
 		formData.append('avatar', avatar)
 		userApi
 			.changeAvatar(formData)
 			.then((response) => {
-				if (response === 'OK') {
-					store.setData('user', response)
-					store.eventBus.emit('change-user', response)
-				}
+				store.setData('user', response)
+				store.eventBus.emit('change-user', response)
 			})
 			.catch((e) => {
 				store.eventBus.emit('change-avatar-failed')
+				console.error(e)
 			})
 	}
 }

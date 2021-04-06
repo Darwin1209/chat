@@ -4,7 +4,7 @@ class Router {
 	private static __instance: Router
 	routes: Route[]
 	history: any
-	_currentRoute: string | null
+	_currentRoute: Route | null
 	_rootQuery: string
 
 	constructor(rootQuery: string) {
@@ -31,14 +31,14 @@ class Router {
 	}
 
 	start() {
-		window.onpopstate = (event) => {
+		window.onpopstate = (event: any) => {
 			this._onRoute(event.currentTarget.location.pathname)
 		}
 
 		this._onRoute(window.location.pathname)
 	}
 
-	_onRoute(pathname) {
+	_onRoute(pathname: string) {
 		const route = this.getRoute(pathname)
 		if (!route) {
 			return
@@ -52,7 +52,7 @@ class Router {
 		route.render()
 	}
 
-	go(pathname) {
+	go(pathname: string) {
 		this.history.pushState({}, '', pathname)
 		this._onRoute(pathname)
 	}
@@ -69,7 +69,7 @@ class Router {
 		return Boolean(sessionStorage.getItem('login')) === true
 	}
 
-	getRoute(pathname) {
+	getRoute(pathname: string) {
 		return this.routes.find((route) => route.match(pathname))
 	}
 }

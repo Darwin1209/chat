@@ -3,7 +3,7 @@ import ChatsController from '../../../controlers/chatsControler.js'
 
 const store = Store.getInstance()
 
-export function click(e) {
+export function click(e: any) {
 	const item = e.target
 	const closestItem: HTMLElement = item.closest('button')
 
@@ -58,7 +58,7 @@ export function click(e) {
 	}
 }
 
-export function submit(e) {
+export function submit(e: any) {
 	e.preventDefault()
 	const form: HTMLFormElement = e.target
 	const action: string = form.dataset.type || 'none'
@@ -73,7 +73,7 @@ export function submit(e) {
 	}
 }
 
-export function closeModal(target) {
+export function closeModal(target: any) {
 	target.setProps({
 		...target.props,
 		context: {

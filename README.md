@@ -7,7 +7,7 @@ https://www.figma.com/file/24EUnEHGEDNLdOcxg7ULwV/Chat?node-id=0%3A1.
 
 ## Демо сайта
 
-Сайт задеплоен на netlify - https://thirsty-ride-626deb.netlify.app/
+Приложение развёрнуто в докере на heroku - https://project-chat-darwin.herokuapp.com/
 
 ## Описание
 

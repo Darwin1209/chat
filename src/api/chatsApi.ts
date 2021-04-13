@@ -1,5 +1,5 @@
 import HTTPTransport from './http.js'
-import { BASE_URL, CHATS, CHATS_USER } from './constant.js'
+import { BASE_URL, CHATS, CHATS_USER, CHATS_TOKEN } from './constant.js'
 
 const api = new HTTPTransport(BASE_URL)
 
@@ -20,7 +20,37 @@ export class ChatsApi {
 		}
 	}
 
-	async addUser(user: string, chatId: number) {
+	async getToken(id: number) {
+		try {
+			const { response, status } = await api.post(`${CHATS_TOKEN}/${id}`, {})
+			if (status !== 200) {
+				throw new Error(response)
+			}
+			return JSON.parse(response)
+		} catch (e) {
+			throw new Error(e)
+		}
+	}
+
+	async createChat(title: string) {
+		try {
+			const { response, status } = await api.post(CHATS, {
+				data: {
+					title,
+				},
+				headers: headersJson,
+			})
+
+			if (status !== 200) {
+				throw new Error(response)
+			}
+			return JSON.parse(response)
+		} catch (e) {
+			throw new Error(e)
+		}
+	}
+
+	async addUser(user: string, chatId: string) {
 		try {
 			const { response, status } = await api.put(CHATS_USER, {
 				data: {
@@ -32,13 +62,13 @@ export class ChatsApi {
 			if (status !== 200) {
 				throw new Error(response)
 			}
-			return JSON.parse(response)
+			return response
 		} catch (err) {
 			throw new Error(err)
 		}
 	}
 
-	async removeUser(user: string, chatId: number) {
+	async removeUser(user: string, chatId: string) {
 		try {
 			const { response, status } = await api.delete(CHATS_USER, {
 				data: {
@@ -50,7 +80,7 @@ export class ChatsApi {
 			if (status !== 200) {
 				throw new Error(response)
 			}
-			return JSON.parse(response)
+			return response
 		} catch (err) {
 			throw new Error(err)
 		}

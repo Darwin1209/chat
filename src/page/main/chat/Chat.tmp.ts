@@ -47,7 +47,6 @@ export const template: string = `
   </div>
 
   <section class="messages">
-    <h2 class="messages__date">19 июня</h2>
     <ul class="messages-list">
     {{#each list}}
 
@@ -63,7 +62,7 @@ export const template: string = `
       </li>
         {{else}}
         <div class="message {{#if this.me}}message_me{{else}}message_opponent{{/if}} message_type-text">
-          <div class="message__text">{{this.text}}</div>
+          <div class="message__text">{{this.content}}</div>
           <div class="message__date">{{this.date}}</div>
         </div>
         {{/if}}
@@ -72,8 +71,8 @@ export const template: string = `
     {{/each}}
     </ul>
   </section>
-
-  <form action="" class="form form-submit">
+  {{#if chat.title}}
+  <form action="" class="form form-submit" data-type="message">
     <button class="form-submit__additional">
       <svg
         width="32"
@@ -131,6 +130,7 @@ export const template: string = `
       type="text"
       placeholder="Сообщение"
     />
-    <button class="form-submit__send"></button>
+    <button class="form-submit__send" type="submit"></button>
   </form>
+  {{/if}}
 `

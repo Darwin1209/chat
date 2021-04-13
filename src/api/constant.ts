@@ -11,6 +11,7 @@ export const PASSWORD: string = '​/user​/password'
 
 export const CHATS: string = '/chats'
 export const CHATS_USER: string = '/chats/users'
+export const CHATS_TOKEN: string = '/chats/token'
 
 
 //На следующей итерации добавлю константы для ошибок

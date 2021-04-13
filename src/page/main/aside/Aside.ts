@@ -1,10 +1,11 @@
-import Store from '../../../store/Store.js'
 import ChatsController from '../../../controlers/chatsControler.js'
+import Store from '../../../store/Store.js'
 
 import Block, { Props } from '../../../modules/block.js'
 
 import { compile } from '../../../utils/templator.js'
 import { template } from './Aside.tmp.js'
+import { click, submit } from './functions.js'
 
 const store = Store.getInstance()
 
@@ -15,28 +16,18 @@ export default class Aside extends Block {
 			className: 'chats',
 			events: {
 				click: (e: any) => {
-					const item = e.target
-					if (item.className.includes('chat')) {
-						const id = Number(item.dataset.chat)
-						store.eventBus.emit('changeChat', id)
-						const chats = store.getData('chats')
-						const items = chats?.map((el: any) => {
-							if (el.id === id) {
-								return { ...el, active: true }
-							}
-							return el
-						})
-						this.setProps({
-							...this.props,
-							items,
-						})
-					}
+					click.bind(this)(e)
 				},
+				submit,
 			},
 		})
 
 		store.eventBus.on('get-chats', () => {
 			this.eventBus.emit('flow:render')
+		})
+
+		store.eventBus.on('add-chat-error', () => {
+			alert('Ошибка в создании чата')
 		})
 	}
 
@@ -44,6 +35,7 @@ export default class Aside extends Block {
 		const chats = store.getData('chats')
 		return compile(template, {
 			list: chats,
+			context: this.props.context,
 		})
 	}
 

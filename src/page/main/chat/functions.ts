@@ -63,13 +63,17 @@ export function submit(e: any) {
 	const form: HTMLFormElement = e.target
 	const action: string = form.dataset.type || 'none'
 	const login: string = form.querySelector('input')?.value || ''
-	const chatID: number = store.getData('currentChat')
+	const chatID: string = String(store.getData('currentChat'))
 	if (action === 'user-add') {
 		ChatsController.addUser(login, chatID)
 	}
 
 	if (action === 'user-remove') {
 		ChatsController.removeUser(login, chatID)
+	}
+
+	if (action === 'message') {
+		ChatsController.sendMessage(login)
 	}
 }
 

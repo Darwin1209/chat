@@ -3,3 +3,4 @@ gulpfile.js
 my_folder
 old_static
 static/js
+dist

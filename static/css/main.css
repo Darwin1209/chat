@@ -76,7 +76,6 @@
 .chats-list {
 	margin: 0;
 	padding: 0;
-	height: 88vh;
 	margin-top: 14px;
 	list-style: none;
 	overflow: auto;
@@ -88,12 +87,29 @@
 		margin: 0 10px;
 		cursor: pointer;
 	}
+
+.wrapper-button {
+	padding: 20px;
+	margin: 12px 0;
+}
+
+.button-chat {
+	padding: 12px;
+	width: 100%;
+	color: #ffffff;
+	background-color: var(--main-blue);
+	font-size: 16px;
+	border: none;
+	border-radius: 16px;
+}
+
 .chat {
 	display: flex;
 	align-items: flex-start;
 	padding: 10px;
 	margin: 0 -10px;
 }
+
 .chat__wrap-img {
 		width: 47px;
 		height: 47px;
@@ -102,6 +118,7 @@
 		border-radius: 50%;
 		background-color: #efefef;
 	}
+
 .chat__name {
 		margin: 0;
 		margin-bottom: 4px;
@@ -111,6 +128,7 @@
 		line-height: 13px;
 		color: var(--main-text);
 	}
+
 .chat__message {
 		margin: 0;
 		font-weight: 500;
@@ -118,12 +136,15 @@
 		line-height: 15px;
 		color: #999999;
 	}
+
 .chat__person {
 		color: var(--main-text);
 	}
+
 .chat__wrap-date {
 		margin-left: auto;
 	}
+
 .chat__date {
 		font-weight: 500;
 		font-size: 9px;
@@ -131,6 +152,7 @@
 
 		color: #999999;
 	}
+
 .chat__count {
 		display: flex;
 		align-items: center;
@@ -146,6 +168,7 @@
 		line-height: 12px;
 		color: #ffffff;
 	}
+
 .chat_active {
 		background-color: #e4edfd;
 	}
@@ -377,8 +400,8 @@
 	background-image: url(../img/plus.svg);
 	background-size: 12px;
 	background-position: center;
-  background-repeat: no-repeat;
-  pointer-events: none;
+	background-repeat: no-repeat;
+	pointer-events: none;
 }
 
 .plus_rotate {
@@ -407,6 +430,7 @@
 	margin: 0;
 	margin-top: 30px;
 	list-style: none;
+	overflow: auto;
 }
 .messages-list__item {
 		display: flex;
@@ -416,6 +440,7 @@
 	margin-bottom: 20px;
 }
 .message_opponent .message__text {
+			padding-right: 63px;
 			background-color: #f8f8f8;
 			border-radius: 0px 10px 10px 10px;
 		}

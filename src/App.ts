@@ -6,8 +6,14 @@ import Profile from './page/profile/index'
 import Registration from './page/registration/index'
 import ProfileChangeData from './page/profileChangeData/index'
 import ProfileChangePass from './page/profileChangePass/index'
-import E404 from './page/404/index.js'
-import E500 from './page/500/index.js'
+import E404 from './page/404/index'
+import E500 from './page/500/index'
+
+import './css/general.css'
+import './css/error.css'
+import './css/form.css'
+import './css/main.css'
+import './css/profile.css'
 
 const app = new Router('#root')
 

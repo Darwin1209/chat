@@ -1,13 +1,13 @@
-import Store from '../../../store/Store.js'
+import Store from '../../../store/Store'
 
-import Block, { Props } from '../../../modules/block.js'
+import Block, { Props } from '../../../modules/block'
 
-import { compile } from '../../../utils/templator.js'
-import { formatDate } from '../../../utils/formatDate.js'
-import { template } from './Chat.tmp.js'
-// import { list } from './mock.js'
+import { compile } from '../../../utils/templator'
+import { formatDate } from '../../../utils/formatDate'
+import { template } from './Chat.tmp'
+// import { list } from './mock'
 
-import { click, submit, closeModal } from './functions.js'
+import { click, submit, closeModal } from './functions'
 
 const store = new Store()
 
@@ -61,14 +61,17 @@ export default class Chat extends Block {
 	}
 
 	render() {
+		return compile(template, {
+			...this.props,
+			chat: this.props.currentChat,
+		})
+	}
+
+	componentDidRender() {
 		const list = document.querySelector('messages-list')
 
 		list?.scrollTo({
 			top: 9999,
-		})
-		return compile(template, {
-			...this.props,
-			chat: this.props.currentChat,
 		})
 	}
 }

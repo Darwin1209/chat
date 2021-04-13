@@ -1,11 +1,11 @@
-import Router from './routers/Router.js'
+import Router from './routers/Router'
 
-import Main from './page/main/index.js'
-import Auth from './page/auth/index.js'
-import Profile from './page/profile/index.js'
-import Registration from './page/registration/index.js'
-import ProfileChangeData from './page/profileChangeData/index.js'
-import ProfileChangePass from './page/profileChangePass/index.js'
+import Main from './page/main/index'
+import Auth from './page/auth/index'
+import Profile from './page/profile/index'
+import Registration from './page/registration/index'
+import ProfileChangeData from './page/profileChangeData/index'
+import ProfileChangePass from './page/profileChangePass/index'
 import E404 from './page/404/index.js'
 import E500 from './page/500/index.js'
 

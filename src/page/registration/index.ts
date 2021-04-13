@@ -1,3 +1,3 @@
-import Registration from './Registration.js'
+import Registration from './Registration'
 
 export default Registration

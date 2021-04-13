@@ -1,9 +1,9 @@
-import Block from '../../modules/block.js'
+import Block from '../../modules/block'
 
-import ProfileComp from '../../components/profileComp/index.js'
+import ProfileComp from '../../components/profileComp/index'
 
-import { renderChildren } from '../../utils/renderChildren.js'
-import { fields } from './mock.js'
+import { renderChildren } from '../../utils/renderChildren'
+import { fields } from './mock'
 
 export default class Profile extends Block {
 	constructor() {

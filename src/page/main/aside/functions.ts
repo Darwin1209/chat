@@ -1,5 +1,5 @@
-import Store from '../../../store/Store.js'
-import ChatsController from '../../../controlers/chatsControler.js'
+import Store from '../../../store/Store'
+import ChatsController from '../../../controlers/chatsControler'
 
 const store = Store.getInstance()
 

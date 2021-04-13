@@ -1,16 +1,13 @@
-import Store from '../../store/Store.js'
-import Router from '../../routers/Router.js'
-import AuthController from '../../controlers/authControler.js'
+import Store from '../../store/Store'
+import Router from '../../routers/Router'
+import AuthController from '../../controlers/authControler'
 
-//Благодарю за ссылку про архитектуру, на следующей итерации попытаюсь улучшить
+import Block from '../../modules/block'
 
-import Block from '../../modules/block.js'
+import Aside from './aside/index'
+import Chat from './chat/index'
 
-//Попытка использовать импорт по умолчанию, но не знаю как использовать без webpack
-import Aside from './aside/index.js'
-import Chat from './chat/index.js'
-
-import { renderChildren } from '../../utils/renderChildren.js'
+import { renderChildren } from '../../utils/renderChildren'
 
 const router = new Router('#root')
 const store = new Store()

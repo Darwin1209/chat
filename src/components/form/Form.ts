@@ -1,8 +1,8 @@
-import Block, { Props } from '../../modules/block.js'
+import Block, { Props } from '../../modules/block'
 
-import { compile } from '../../utils/templator.js'
-import { template } from './Form.tmp.js'
-import { submit, focus, blur } from './functions.js'
+import { compile } from '../../utils/templator'
+import { template } from './Form.tmp'
+import { submit, focus, blur } from './functions'
 
 export default class Form extends Block {
 	constructor(props: Props) {

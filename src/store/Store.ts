@@ -1,4 +1,4 @@
-import { EventBus } from './../utils/EventBus.js'
+import { EventBus } from './../utils/EventBus'
 
 export default class Store {
 	static __instance: Store

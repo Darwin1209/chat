@@ -1,3 +1,3 @@
-import ProfileChangePass from './Profile.js'
+import ProfileChangePass from './Profile'
 
 export default ProfileChangePass

@@ -1,5 +1,5 @@
-import HTTPTransport from './http.js'
-import { BASE_URL, PROFILE, AVATAR, PASSWORD } from './constant.js'
+import HTTPTransport from './http'
+import { BASE_URL, PROFILE, AVATAR, PASSWORD } from './constant'
 
 const api = new HTTPTransport(BASE_URL)
 

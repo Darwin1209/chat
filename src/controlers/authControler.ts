@@ -1,6 +1,6 @@
-import { AuthApi, Login, Registration } from '../api/authApi.js'
-import Router from '../routers/Router.js'
-import Store from '../store/Store.js'
+import { AuthApi, Login, Registration } from '../api/authApi'
+import Router from '../routers/Router'
+import Store from '../store/Store'
 
 const router = new Router('#root')
 const store = new Store()

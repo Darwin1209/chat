@@ -1,3 +1,3 @@
-import ProfileComp from './ProfileComp.js'
+import ProfileComp from './ProfileComp'
 
 export default ProfileComp

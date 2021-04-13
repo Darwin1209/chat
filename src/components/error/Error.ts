@@ -1,7 +1,7 @@
-import Block, { Props } from '../../modules/block.js'
+import Block, { Props } from '../../modules/block'
 
-import { compile } from '../../utils/templator.js'
-import { template } from './Error.tmp.js'
+import { compile } from '../../utils/templator'
+import { template } from './Error.tmp'
 
 export default class Error extends Block {
 	constructor(props: Props) {

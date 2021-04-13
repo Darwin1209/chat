@@ -1,5 +1,5 @@
-import { Props } from '../modules/block.js'
-import { renderDom } from '../utils/renderDom.js'
+import { Props } from '../modules/block'
+import { renderDom } from '../utils/renderDom'
 
 export default class Route {
 	_pathname: string

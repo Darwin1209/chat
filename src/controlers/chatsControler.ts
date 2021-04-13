@@ -1,5 +1,5 @@
-import { ChatsApi } from '../api/chatsApi.js'
-import Store from '../store/Store.js'
+import { ChatsApi } from '../api/chatsApi'
+import Store from '../store/Store'
 
 const PATH = 'wss://ya-praktikum.tech/ws/chats' //<USER_ID>/<CHAT_ID>/<TOKEN_VALUE>
 

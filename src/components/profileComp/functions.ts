@@ -1,9 +1,9 @@
-import { Validation } from '../../utils/validations.js'
+import { Validation } from '../../utils/validations'
 
 const CLASS_LABEL_VALID: string = 'info__valid_active'
 
-import UserController from '../../controlers/userControler.js'
-import AuthController from '../../controlers/authControler.js'
+import UserController from '../../controlers/userControler'
+import AuthController from '../../controlers/authControler'
 
 type Event = {
 	preventDefault(): void

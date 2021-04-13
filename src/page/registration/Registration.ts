@@ -1,14 +1,14 @@
-import Store from '../../store/Store.js'
-import Router from '../../routers/Router.js'
+import Store from '../../store/Store'
+import Router from '../../routers/Router'
 
-import Block from '../../modules/block.js'
+import Block from '../../modules/block'
 
-import Form from '../../components/form/index.js'
+import Form from '../../components/form/index'
 
-import { renderChildren } from '../../utils/renderChildren.js'
-import { fields } from './mock.js'
+import { renderChildren } from '../../utils/renderChildren'
+import { fields } from './mock'
 
-import AuthController from '../../controlers/authControler.js'
+import AuthController from '../../controlers/authControler'
 
 const router = new Router('#root')
 const store = Store.getInstance()

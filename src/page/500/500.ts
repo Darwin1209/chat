@@ -1,8 +1,8 @@
-import Block from '../../modules/block.js'
+import Block from '../../modules/block'
 
-import Error from '../../components/error/index.js'
+import Error from '../../components/error/index'
 
-import { renderChildren } from '../../utils/renderChildren.js'
+import { renderChildren } from '../../utils/renderChildren'
 
 export default class E500 extends Block {
 	constructor() {

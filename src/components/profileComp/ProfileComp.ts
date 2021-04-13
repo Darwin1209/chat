@@ -1,14 +1,14 @@
-import Store from '../../store/Store.js'
-import Router from '../../routers/Router.js'
+import Store from '../../store/Store'
+import Router from '../../routers/Router'
 
-import Block, { Props } from '../../modules/block.js'
+import Block, { Props } from '../../modules/block'
 
-import { template } from './ProfileComp.tmp.js'
-import { compile } from '../../utils/templator.js'
+import { template } from './ProfileComp.tmp'
+import { compile } from '../../utils/templator'
 
-import { blur, submit, click } from './functions.js'
+import { blur, submit, click } from './functions'
 
-import AuthController from '../../controlers/authControler.js'
+import AuthController from '../../controlers/authControler'
 
 const store = new Store()
 const router = new Router('#root')

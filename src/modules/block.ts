@@ -1,5 +1,5 @@
-import { EventBus } from '../utils/EventBus.js'
-import { replaceLink } from '../utils/replaceLink.js'
+import { EventBus } from '../utils/EventBus'
+import { replaceLink } from '../utils/replaceLink'
 
 export interface Props {
 	events?: {

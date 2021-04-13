@@ -1,3 +1,3 @@
-import Error from './Error.js'
+import Error from './Error'
 
 export default Error

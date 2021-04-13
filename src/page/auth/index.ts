@@ -1,3 +1,3 @@
-import Auth from './Auth.js'
+import Auth from './Auth'
 
 export default Auth

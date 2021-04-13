@@ -1,3 +1,3 @@
-import ProfileChangeData from './Profile.js'
+import ProfileChangeData from './Profile'
 
 export default ProfileChangeData

@@ -1,6 +1,6 @@
-import { UserApi, Password, Profile } from '../api/userApi.js'
-import Router from '../routers/Router.js'
-import Store from '../store/Store.js'
+import { UserApi, Password, Profile } from '../api/userApi'
+import Router from '../routers/Router'
+import Store from '../store/Store'
 
 const router = new Router('#root')
 const store = new Store()

@@ -1,11 +1,11 @@
-import ChatsController from '../../../controlers/chatsControler.js'
-import Store from '../../../store/Store.js'
+import ChatsController from '../../../controlers/chatsControler'
+import Store from '../../../store/Store'
 
-import Block, { Props } from '../../../modules/block.js'
+import Block, { Props } from '../../../modules/block'
 
-import { compile } from '../../../utils/templator.js'
-import { template } from './Aside.tmp.js'
-import { click, submit } from './functions.js'
+import { compile } from '../../../utils/templator'
+import { template } from './Aside.tmp'
+import { click, submit } from './functions'
 
 const store = Store.getInstance()
 

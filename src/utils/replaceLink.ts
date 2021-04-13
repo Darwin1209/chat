@@ -1,4 +1,4 @@
-import Router from '../routers/Router.js'
+import Router from '../routers/Router'
 
 export function replaceLink() {
 	this?._element?.querySelectorAll('a').forEach((link: HTMLAnchorElement) => {
